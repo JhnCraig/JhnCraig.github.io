@@ -23,6 +23,51 @@
             overflow-x: hidden;
             max-width: 100%;
         }
+
+        .hero-section {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 90vh;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Zoom animation */
+        /* .hero-section { 
+      animation: zoomBg 30s ease-in-out infinite alternate;
+        }*/
+
+        /*@keyframes zoomBg {
+            from {
+                background-size: 100%;
+            }
+
+            to {
+                background-size: 110%;
+            }
+        }*/
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #features {
+            scroll-margin-top: 80px;
+        }
     </style>
 
 </head>
@@ -39,13 +84,15 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active fs-4 me-4" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active fs-5 me-4" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-4 me-4" href="#">Features</a>
+                        <a class="nav-link fs-5 me-4" href="#features">Features</a>
                     </li>
                 </ul>
             </div>
@@ -54,66 +101,84 @@
 
 
     <!-- Front -->
-    <div class="container-fluid bg-black m-0 h-5">
-        <div class="row text-center">
-            <div class="col-md-12 text-white m-5 text-center">
-                <h1 class="text-5xl font-extrabold mb-4">Enter the World of Demon Slayers</h1>
-                <p class="text-lg max-w-xl">Explore characters, story arcs, and
-                    breathtaking visuals from the Demon Slayer universe.</p>
-            </div>
+    <div class="container-fluid hero-section d-flex align-items-center justify-content-center text-center text-white"
+        style="background-image: url('https://comicbook.com/wp-content/uploads/sites/4/2025/03/Demon-Slayer-Infinity-Castle-Movie-Poster-Upper-Ranks.jpg?resize=425');">
+
+        <div class="overlay"></div>
+
+        <div class="content">
+            <h1 class="display-4 fw-bold mb-4">Enter the World of Demon Slayers</h1>
+            <p class="lead">Explore characters, story arcs, and breathtaking visuals from the Demon Slayer universe.</p>
         </div>
+
     </div>
 
 
 
     <!-- Card -->
     <div class="container-fluid d-flex justify-content-center align-items-center pt-5 mb-5 p-0">
+
         <div class="w-100">
 
-            <div class="container pt-5 a">
-                <h2 class="text-center text-decoration-underline mt-3 mb-4">
-                    <p>Features</p>
+            <div class="container pt-5">
+
+                <h2 id="features" class="text-center text-decoration-underline mt-3 mb-4">
+                    Features
                 </h2>
+
+                <!-- Top Card -->
+                <div class="row justify-content-center g-4 text-center">
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card h-100">
+                            <img src="..." class="card-img-top" alt="">
+                            <div class="card-body">
+                                <p class="card-text">Slayer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card h-100">
+                            <img src="..." class="card-img-top" alt="">
+                            <div class="card-body">
+                                <p class="card-text">Demon</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card h-100">
+                            <img src="..." class="card-img-top" alt="">
+                            <div class="card-body">
+                                <p class="card-text">Crow</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Card -->
+                <div class="row justify-content-center g-4 text-center mt-3">
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card h-100">
+                            <img src="..." class="card-img-top" alt="">
+                            <div class="card-body">
+                                <p class="card-text">Series</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card h-100">
+                            <img src="..." class="card-img-top" alt="">
+                            <div class="card-body">
+                                <p class="card-text">Manga</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="row justify-content-center text-center g-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Slayer</p>
-                    </div>
-                </div>
-
-                <div class="card" style="width: 18rem;">
-                    <img src="..." alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Demon</p>
-                    </div>
-                </div>
-
-                <div class="card" style="width: 18rem;">
-                    <img src="..." alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Crow</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row justify-content-center mt-5 text-center g-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Series</p>
-                    </div>
-                </div>
-
-                <div class="card" style="width: 18rem;">
-                    <img src="..." alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Manga</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -121,6 +186,15 @@
         <h2 class="text-white mt-5 mb-4 fs-4">
             <p>Story Overview:</p>
         </h2>
+
+        <p class="text-white mb-4 ms-5 me-5" style="text-align: justify;">
+            The story is set in Taishō-era Japan, where a secret organization called the Demon Slayer Corps 
+            has fought demons for centuries. Demons are former humans with supernatural abilities, including 
+            enhanced strength, rapid regeneration, and unique powers known as Blood Demon Arts. They can only 
+            be killed by sunlight, decapitation with Nichirin swords, or wisteria-based poison. The Demon 
+            Slayers, though human, use Breathing Styles, elemental techniques that grant superhuman abilities, 
+            to combat these demons. The most elite members are the Hashira, who have achieved exceptional skill 
+            and strength.
     </div>
 
 
