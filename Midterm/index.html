@@ -47,11 +47,11 @@
         }
 
         /* Zoom animation */
-        /* .hero-section { 
-      animation: zoomBg 30s ease-in-out infinite alternate;
-        }*/
+        .hero-section {
+            animation: zoomBg 30s ease-in-out infinite alternate;
+        }
 
-        /*@keyframes zoomBg {
+        @keyframes zoomBg {
             from {
                 background-size: 100%;
             }
@@ -59,13 +59,17 @@
             to {
                 background-size: 110%;
             }
-        }*/
+        }
 
         html {
             scroll-behavior: smooth;
         }
 
         #features {
+            scroll-margin-top: 80px;
+        }
+
+        #Home {
             scroll-margin-top: 80px;
         }
     </style>
@@ -75,9 +79,9 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-maroon">
-        <div class="container-fluid">
-            <a class="navbar-brand ms-3" href="#">
+    <nav class="navbar navbar-expand-lg bg-maroon fixed-top">
+        <div class="container-fluid" style="height: 62px;">
+            <a class="navbar-brand ms-3" href="#Home">
                 <h2>DEMON SLAYER</h2>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -89,7 +93,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active fs-5 me-4" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active fs-5 me-4" aria-current="page" href="#Home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-5 me-4" href="#features">Features</a>
@@ -101,8 +105,9 @@
 
 
     <!-- Front -->
-    <div class="container-fluid hero-section d-flex align-items-center justify-content-center text-center text-white"
-        style="background-image: url('https://comicbook.com/wp-content/uploads/sites/4/2025/03/Demon-Slayer-Infinity-Castle-Movie-Poster-Upper-Ranks.jpg?resize=425');">
+    <div id="Home"
+        class="container-fluid hero-section d-flex align-items-center justify-content-center text-center text-white"
+        style="background-image: url('https://comicbook.com/wp-content/uploads/sites/4/2025/03/Demon-Slayer-Infinity-Castle-Movie-Poster-Upper-Ranks.jpg?resize=425'); margin-top: 78px;">
 
         <div class="overlay"></div>
 
@@ -129,51 +134,62 @@
                 <!-- Top Card -->
                 <div class="row justify-content-center g-4 text-center">
                     <div class="col-md-4 col-lg-3">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="">
-                            <div class="card-body">
-                                <p class="card-text">Slayer</p>
+                        <a href="slayer.html" class="text-decoration-none">
+                            <div class="card h-100">
+                                <img src="https://media.forgecdn.net/avatars/388/893/637580990625262136.png"
+                                    class="card-img-top" alt="" style="height: 150px; object-fit: contain;">
+                                <div class="card-body">
+                                    <h3>
+                                        <p class="card-text"><strong>Slayer</strong></p>
+                                    </h3>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-md-4 col-lg-3">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="">
-                            <div class="card-body">
-                                <p class="card-text">Demon</p>
+                        <a href="demon.html" class="text-decoration-none">
+                            <div class="card h-100">
+                                <img src="https://img.magnific.com/premium-vector/demon-logo-icon-design_775854-1827.jpg?w=2000"
+                                    class="card-img-top" alt="" style="height: 150px; object-fit: contain;">
+                                <div class="card-body">
+                                    <h3>
+                                        <p class="card-text"><strong>Demon</strong></p>
+                                    </h3>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="">
-                            <div class="card-body">
-                                <p class="card-text">Crow</p>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Bottom Card -->
                 <div class="row justify-content-center g-4 text-center mt-3">
                     <div class="col-md-4 col-lg-3">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="">
-                            <div class="card-body">
-                                <p class="card-text">Series</p>
+                        <a href="breathing.html" class="text-decoration-none">
+                            <div class="card h-100">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d4cfdf7e-824a-4ffa-bf04-4253a6e64a25/dib70u8-ffd38a6d-f5ba-419c-b116-4b3879c12bc4.png/v1/fill/w_894,h_894/serious_zenitsu__by_3v4d_dib70u8-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2Q0Y2ZkZjdlLTgyNGEtNGZmYS1iZjA0LTQyNTNhNmU2NGEyNVwvZGliNzB1OC1mZmQzOGE2ZC1mNWJhLTQxOWMtYjExNi00YjM4NzljMTJiYzQucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.kneaIiyLqXrnGQHR3I2nlwPB-mdGPcaprVny-7zuFdM"
+                                    class="card-img-top" alt="" style="height: 150px; object-fit: contain;">
+                                <div class="card-body">
+                                    <h3>
+                                        <p class="card-text"><strong>Breathing Style</strong></p>
+                                    </h3>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-md-4 col-lg-3">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="">
-                            <div class="card-body">
-                                <p class="card-text">Manga</p>
+                        <a href="demonArt.html" class="text-decoration-none">
+                            <div class="card h-100">
+                                <img src="..." class="card-img-top" alt=""
+                                    style="height: 150px; object-fit: contain; border-radius: 100%;">
+                                <div class="card-body">
+                                    <h3>
+                                        <p class="card-text"><strong>Blood Demon Art</strong></p>
+                                    </h3>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                 </div>
@@ -188,12 +204,12 @@
         </h2>
 
         <p class="text-white mb-4 ms-5 me-5" style="text-align: justify;">
-            The story is set in Taishō-era Japan, where a secret organization called the Demon Slayer Corps 
-            has fought demons for centuries. Demons are former humans with supernatural abilities, including 
-            enhanced strength, rapid regeneration, and unique powers known as Blood Demon Arts. They can only 
-            be killed by sunlight, decapitation with Nichirin swords, or wisteria-based poison. The Demon 
-            Slayers, though human, use Breathing Styles, elemental techniques that grant superhuman abilities, 
-            to combat these demons. The most elite members are the Hashira, who have achieved exceptional skill 
+            The story is set in Taishō-era Japan, where a secret organization called the Demon Slayer Corps
+            has fought demons for centuries. Demons are former humans with supernatural abilities, including
+            enhanced strength, rapid regeneration, and unique powers known as Blood Demon Arts. They can only
+            be killed by sunlight, decapitation with Nichirin swords, or wisteria-based poison. The Demon
+            Slayers, though human, use Breathing Styles, elemental techniques that grant superhuman abilities,
+            to combat these demons. The most elite members are the Hashira, who have achieved exceptional skill
             and strength.
     </div>
 
