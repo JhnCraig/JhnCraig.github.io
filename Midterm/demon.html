@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        .bg-maroon {
+            background-color: #800000 !important;
+        }
+
+        .bg-maroon .nav-link,
+        .bg-maroon .navbar-brand {
+            color: white !important;
+        }
+
+        .bg-white {
+            background-color: #ffffff !important;
+        }
+    </style>
+
+</head>
+
+<body class="bg-dark">
+
+    <nav class="navbar navbar-expand-lg bg-maroon">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-3" href="#">
+                <h2>DEMON SLAYER</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active fs-5 me-4" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 me-4" href="index.html#features">Features</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <div class="container mt-4">
+        <div class="row">
+
+            <div class="col-auto" style="width: 420px; height: 420px;">
+                <div class="bg-maroon p-4 rounded h-100">
+
+                    <div class="text-center mb-3">
+                        <h2 class="text-white">DEMON</h2>
+                    </div>
+
+                    <!-- Search -->
+                    <form class="d-flex mb-4">
+                        <input class="form-control me-2" type="search" placeholder="Search" />
+                        <button class="btn btn-outline-light">Search</button>
+                    </form>
+
+                    <!-- Cards -->
+                    <div class="row g-3 text-center pt-4">
+
+                        <div class="col-6">
+                            <a href="slayer.html" class="text-decoration-none">
+                                <div class="card bg-white rounded">
+                                    <img src="https://media.forgecdn.net/avatars/388/893/637580990625262136.png"
+                                        class="card-img-top mx-auto mt-2"
+                                        style="width: 60px; height: 60px; object-fit: cover;">
+                                    <div class="card-body p-2">Slayer</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card bg-white rounded">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d4cfdf7e-824a-4ffa-bf04-4253a6e64a25/dib70u8-ffd38a6d-f5ba-419c-b116-4b3879c12bc4.png/v1/fill/w_894,h_894/serious_zenitsu__by_3v4d_dib70u8-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2Q0Y2ZkZjdlLTgyNGEtNGZmYS1iZjA0LTQyNTNhNmU2NGEyNVwvZGliNzB1OC1mZmQzOGE2ZC1mNWJhLTQxOWMtYjExNi00YjM4NzljMTJiYzQucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.kneaIiyLqXrnGQHR3I2nlwPB-mdGPcaprVny-7zuFdM"
+                                    class="card-img-top mx-auto mt-2"
+                                    style="width: 60px; height: 60px; object-fit: cover;">
+                                <div class="card-body p-2">Breathing Style</div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 mx-auto">
+                            <div class="card bg-white rounded">
+                                <img src="..." class="card-img-top mx-auto mt-2"
+                                    style="width: 60px; height: 60px; object-fit: cover;">
+                                <div class="card-body p-2">Blood Demon Art</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="col" style="height: 1000;">
+                <div class="bg-white p-4 rounded h-100">
+
+                    <h3 class="mb-4">Characters</h3>
+
+                    <div class="row g-4">
+
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne">
+                                        Slayer #1
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="tanjiro"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo">
+                                        Slayer #2
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="giyu"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseThree">
+                                        Slayer #3
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="sakonji"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFour">
+                                        Slayer #4
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="sabito"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFive">
+                                        Slayer #5
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="makomo"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseSix">
+                                        Slayer #6
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseSix" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="genya"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseSeven">
+                                        Slayer #7
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="zenitsu"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseEight">
+                                        Slayer #8
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseEight" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="inosuke"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseNine">
+                                        Slayer #9
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseNine" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="aoi"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTen">
+                                        Slayer #10
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTen" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="kanao"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseEleven">
+                                        Slayer #11
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseEleven" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="shinobu"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwelve">
+                                        Slayer #12
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwelve" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="murata"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTherteen">
+                                        Slayer #13
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTherteen" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="kagaya"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFourteen">
+                                        Slayer #14
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFourteen" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="tengen"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFifteen">
+                                        Slayer #15
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFifteen" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="mitsuri"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseSixteen">
+                                        Slayer #16
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseSixteen" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="kyojuro "></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseSeventeen">
+                                        Slayer #17
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseSeventeen" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="muichiro"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseEighteen">
+                                        Slayer #18
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseEighteen" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="gyomei"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseNineteen">
+                                        Slayer #19
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseNineteen" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="obanai"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwenty">
+                                        Slayer #20
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwenty" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="sanemi"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwentyOne">
+                                        Slayer #21
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwentyOne" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="hotaru"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwentyTwo">
+                                        Slayer #22
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwentyTwo" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" id="Yoriichi"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+    <script>
+        async function loadCharacters() {
+            try {
+                const resPage1 = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=3&page=1");
+                const page1 = (await resPage1.json()).content;
+
+                const resPage2 = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=3&page=2");
+                const page2 = (await resPage2.json()).content;
+
+                const resPage3 = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=3&page=3");
+                const page3 = (await resPage3.json()).content;
+
+                const resPage4 = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=3&page=4");
+                const page4 = (await resPage4.json()).content;
+
+                const resPage7 = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=3&page=7");
+                const page7 = (await resPage7.json()).content;
+
+                const resPage9 = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=3&page=9");
+                const page9 = (await resPage9.json()).content;
+
+                const resPage10 = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=3&page=10");
+                const page10 = (await resPage10.json()).content;
+
+                const resPage11 = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=3&page=11");
+                const page11 = (await resPage11.json()).content;
+
+                const resPage12 = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=3&page=12");
+                const page12 = (await resPage12.json()).content;
+
+                const resPage14 = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=3&page=14");
+                const page14 = (await resPage14.json()).content;
+
+                const resPage15 = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=3&page=15");
+                const page15 = (await resPage15.json()).content;
+
+
+
+                const tanjiro = page1.find(c => c.name.toLowerCase().includes("tanjiro"));
+                const giyu = page1.find(c => c.name.toLowerCase().includes("giyu"));
+
+                const sakonji = page2.find(c => c.name.toLowerCase().includes("urokodaki"));
+                const sabito = page2.find(c => c.name.toLowerCase().includes("sabito"));
+                const makomo = page2.find(c => c.name.toLowerCase().includes("makomo"));
+
+                const genya = page3.find(c => c.name.toLowerCase().includes("genya"));
+                const zenitsu = page3.find(c => c.name.toLowerCase().includes("zenitsu"));
+
+                const inosuke = page4.find(c => c.name.toLowerCase().includes("inosuke"));
+                const aoi = page4.find(c => c.name.toLowerCase().includes("aoi"));
+                const kanao = page4.find(c => c.name.toLowerCase().includes("kanao"));
+
+                const shinobu = page7.find(c => c.name.toLowerCase().includes("shinobu"));
+                const murata = page7.find(c => c.name.toLowerCase().includes("murata"));
+
+                const kagaya = page9.find(c => c.name.toLowerCase().includes("kagaya"));
+
+                const tengen = page10.find(c => c.name.toLowerCase().includes("tengen"));
+                const mitsuri = page10.find(c => c.name.toLowerCase().includes("mitsuri"));
+                const kyojuro = page10.find(c => c.name.toLowerCase().includes("kyojuro"));
+
+                const muichiro = page11.find(c => c.name.toLowerCase().includes("muichiro"));
+                const gyomei = page11.find(c => c.name.toLowerCase().includes("gyomei"));
+                const obanai = page11.find(c => c.name.toLowerCase().includes("obanai"));
+
+                const sanemi = page12.find(c => c.name.toLowerCase().includes("sanemi"));
+
+                const hotaru = page14.find(c => c.name.toLowerCase().includes("hotaru"));
+
+                const yuriichi = page14.find(c => c.name.toLowerCase().includes("yuriichi"));
+
+
+
+                function render(id, character) {
+                    const el = document.getElementById(id);
+                    if (!el) return; // prevents crash if div missing
+
+                    if (!character) {
+                        el.innerHTML = "<p>Character not found</p>";
+                        return;
+                    }
+
+                    el.innerHTML = `
+                <div style="display:flex; gap:20px; align-items:flex-start;">
+                    <div>
+                        <img src="${character.img}" width="180" style="border-radius:10px;">
+                    </div>
+
+                    <div>
+                        <h3>${character.name}</h3>
+                        <p><strong>Age:</strong> ${character.age || "N/A"}</p>
+                        <p><strong>Gender:</strong> ${character.gender || "N/A"}</p>
+                        <p><strong>Race:</strong> ${character.race || "N/A"}</p>
+                        <p><strong>Description:</strong> ${character.description || "No description"}</p>
+                        <p><strong>Quote:</strong> <em>"${character.quote || 'No quote'}"</em></p>
+
+                    </div>
+                </div>
+            `;
+                }
+
+                render("tanjiro", tanjiro);
+                render("giyu", giyu);
+
+                render("sakonji", sakonji);
+                render("sabito", sabito);
+                render("makomo", makomo);
+
+                render("genya", genya);
+                render("zenitsu", zenitsu);
+
+                render("inosuke", inosuke);
+                render("aoi", aoi);
+                render("kanao", kanao);
+
+                render("shinobu", shinobu);
+                render("murata", murata);
+
+                render("kagaya", kagaya);
+
+                render("tengen", tengen);
+                render("mitsuri", mitsuri);
+                render("kyojuro", kyojuro);
+
+                render("muichiro", muichiro);
+                render("gyomei", gyomei);
+                render("obanai", obanai);
+
+                render("sanemi", sanemi);
+
+                render("hotaru", hotaru);
+
+                render("yuriichi", yuriichi);
+
+            } catch (err) {
+                console.error("ERROR:", err);
+            }
+        }
+
+        loadCharacters();
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
