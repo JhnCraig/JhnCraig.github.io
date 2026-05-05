@@ -94,20 +94,24 @@
                         </div>
 
                         <div class="col-6">
-                            <div class="card bg-white rounded">
-                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d4cfdf7e-824a-4ffa-bf04-4253a6e64a25/dib70u8-ffd38a6d-f5ba-419c-b116-4b3879c12bc4.png/v1/fill/w_894,h_894/serious_zenitsu__by_3v4d_dib70u8-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2Q0Y2ZkZjdlLTgyNGEtNGZmYS1iZjA0LTQyNTNhNmU2NGEyNVwvZGliNzB1OC1mZmQzOGE2ZC1mNWJhLTQxOWMtYjExNi00YjM4NzljMTJiYzQucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.kneaIiyLqXrnGQHR3I2nlwPB-mdGPcaprVny-7zuFdM"
-                                    class="card-img-top mx-auto mt-2"
-                                    style="width: 60px; height: 60px; object-fit: cover;">
-                                <div class="card-body p-2">Breathing Style</div>
-                            </div>
+                            <a href="breathing.html" class="text-decoration-none">
+                                <div class="card bg-white rounded">
+                                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d4cfdf7e-824a-4ffa-bf04-4253a6e64a25/dib70u8-ffd38a6d-f5ba-419c-b116-4b3879c12bc4.png/v1/fill/w_894,h_894/serious_zenitsu__by_3v4d_dib70u8-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2Q0Y2ZkZjdlLTgyNGEtNGZmYS1iZjA0LTQyNTNhNmU2NGEyNVwvZGliNzB1OC1mZmQzOGE2ZC1mNWJhLTQxOWMtYjExNi00YjM4NzljMTJiYzQucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.kneaIiyLqXrnGQHR3I2nlwPB-mdGPcaprVny-7zuFdM"
+                                        class="card-img-top mx-auto mt-2"
+                                        style="width: 60px; height: 60px; object-fit: cover;">
+                                    <div class="card-body p-2">Breathing Style</div>
+                                </div>
+                            </a>
                         </div>
 
                         <div class="col-6 mx-auto">
-                            <div class="card bg-white rounded">
-                                <img src="..." class="card-img-top mx-auto mt-2"
-                                    style="width: 60px; height: 60px; object-fit: cover;">
-                                <div class="card-body p-2">Blood Demon Art</div>
-                            </div>
+                            <a href="demonArt.html" class="text-decoration-none">
+                                <div class="card bg-white rounded">
+                                    <img src="..." class="card-img-top mx-auto mt-2"
+                                        style="width: 60px; height: 60px; object-fit: cover;">
+                                    <div class="card-body p-2">Blood Demon Art</div>
+                                </div>
+                            </a>
                         </div>
 
                     </div>
@@ -430,7 +434,11 @@
                 const response = await fetch("https://www.demonslayer-api.com/api/v1/characters?limit=45&page=1");
                 const characters = (await response.json()).content;
 
-                const findCharacter = search => characters.find(c => c.name.toLowerCase().includes(search));
+                const findCharacter = search => {
+                    const query = search.trim().toLowerCase();
+                    const exactMatch = characters.find(c => c.name && c.name.trim().toLowerCase() === query);
+                    return exactMatch || characters.find(c => c.name && c.name.toLowerCase().includes(query));
+                };
 
                 const tanjiro = findCharacter("tanjiro");
                 const giyu = findCharacter("giyu");
