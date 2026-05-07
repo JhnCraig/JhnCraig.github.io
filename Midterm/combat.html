@@ -336,18 +336,17 @@
         }
 
         // FETCH DATA
-        function getCombatStyles() {
+        async function getCombatStyles() {
 
             try {
 
-                const response = fetch(
+                const response = await fetch(
                     "https://www.demonslayer-api.com/api/v1/combat-styles?limit=50&page=1"
                 );
 
-                const data =  response.json();
+                const data = await response.json();
 
-                allCombatStyles =
-                    data.content || [];
+                allCombatStyles = data.content || [];
 
                 renderCombatStyles(allCombatStyles);
 
@@ -356,14 +355,12 @@
                 console.error(error);
 
                 container.innerHTML = `
-                <div class="col-12">
-
-                    <div class="alert alert-danger text-center">
-                        Failed to load combat styles.
-                    </div>
-
+            <div class="col-12">
+                <div class="alert alert-danger text-center">
+                    Failed to load combat styles.
                 </div>
-            `;
+            </div>
+        `;
             }
         }
 

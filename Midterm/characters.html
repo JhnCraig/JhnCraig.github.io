@@ -457,33 +457,29 @@
 
 
         // FETCH DATA
-        function getCharacters() {
-
+        async function getCharacters() {
             try {
-
-                const response = fetch(
+                const response = await fetch(
                     "https://www.demonslayer-api.com/api/v1/characters?limit=45&page=1"
                 );
 
-                const data = response.json();
+                const data = await response.json();
 
                 allCharacters = data.content || [];
 
                 renderCharacters(allCharacters);
-
                 fillRaceOptions(allCharacters);
 
             } catch (error) {
-
                 console.error(error);
 
                 container.innerHTML = `
-                <div class="col-12">
-                    <div class="alert alert-danger text-center">
-                        Failed to load characters.
-                    </div>
+            <div class="col-12">
+                <div class="alert alert-danger text-center">
+                    Failed to load characters.
                 </div>
-            `;
+            </div>
+        `;
             }
         }
 
