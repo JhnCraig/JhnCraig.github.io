@@ -18,15 +18,46 @@
             color: white !important;
         }
 
-        .navbar {
-            z-index: 1050 !important;
+        body {
+            padding-top: 70px;
+        }
+
+        .navbar-collapse {
+            background-color: #800000;
+            text-align: center;
+            z-index: 3100;
+        }
+
+        .navbar-nav .nav-link {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
         }
 
         .sticky-sidebar {
             position: sticky;
-            top: 5.5rem;
+            top: 90px;
             align-self: flex-start;
-            z-index: 1020;
+            z-index: 1050;
+        }
+
+        .navbar {
+            top: 0;
+            width: 100%;
+            z-index: 5000;
+        }
+
+        .sidebar {
+            top: 70px;
+            height: fit-content;
+            z-index: 1000;
         }
 
         .combat-card {
@@ -43,13 +74,14 @@
 <body class="bg-dark">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-maroon fixed-top">
-        <div class="container-fluid" style="height: 62px;">
+    <nav class="navbar navbar-expand-md bg-maroon fixed-top shadow">
+        <div class="container-fluid">
+
             <a class="navbar-brand ms-3" href="#Home">
                 <h2>DEMON SLAYER</h2>
             </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -63,23 +95,30 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </nav>
 
-    <div class="container mt-4">
 
-        <div class="row flex-column flex-lg-row">
+    <div class="container-fluid px-3 mt-4">
+
+        <div class="row g-3 flex-column flex-lg-row">
 
             <!-- SIDEBAR -->
-            <div class="col-12 col-lg-4 sticky-sidebar order-1 order-lg-1" style="margin-top: 78px;">
+            <div class="col-12 col-lg-4 sticky-sidebar order-1 order-lg-1 fixed-top-lg">
 
-                <div class="bg-maroon p-4 rounded h-100 text-white">
+                <div class="bg-maroon p-4 rounded text-white">
 
                     <h2 class="text-center mb-4">Combat Style</h2>
 
                     <form class="d-flex mb-4">
+
                         <input class="form-control me-2" type="search" placeholder="Search">
-                        <button class="btn btn-outline-light">Search</button>
+
+                        <button class="btn btn-outline-light">
+                            Search
+                        </button>
+
                     </form>
 
                     <div class="d-flex justify-content-center mt-3">
@@ -87,13 +126,17 @@
                         <a href="characters.html" class="text-decoration-none">
 
                             <div class="card bg-light text-center mx-auto"
-                                style="width: 110px; height: 110px; cursor:pointer;">
+                                style="width: 140px; height: 140px; cursor:pointer;">
 
                                 <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d4cfdf7e-824a-4ffa-bf04-4253a6e64a25/dib70u8-ffd38a6d-f5ba-419c-b116-4b3879c12bc4.png/v1/fill/w_894,h_894/serious_zenitsu__by_3v4d_dib70u8-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2Q0Y2ZkZjdlLTgyNGEtNGZmYS1iZjA0LTQyNTNhNmU2NGEyNVwvZGliNzB1OC1mZmQzOGE2ZC1mNWJhLTQxOWMtYjExNi00YjM4NzljMTJiYzQucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.kneaIiyLqXrnGQHR3I2nlwPB-mdGPcaprVny-7zuFdM"
-                                    style="width: 100%; height: 80px; object-fit: contain;" class="card-img-top p-2">
+                                    class="card-img-top p-2" style="width:100%; height:95px; object-fit:contain;">
 
                                 <div class="card-body p-1 d-flex align-items-center justify-content-center">
-                                    <small class="fw-bold text-dark">Characters</small>
+
+                                    <small class="fw-bold text-dark">
+                                        Characters
+                                    </small>
+
                                 </div>
 
                             </div>
@@ -109,11 +152,15 @@
             <!-- MAIN -->
             <div class="col-12 col-lg-8 order-2 order-lg-2">
 
-                <div class="bg-white p-4 rounded h-100" style="margin-top: 78px;">
+                <div class="bg-white p-4 rounded">
 
-                    <h5 class="mb-3">Combat Styles</h5>
+                    <h3 class="mb-4">
+                        Combat Styles
+                    </h3>
 
-                    <div class="row g-2" id="characterContainer"></div>
+                    <div class="row g-3" id="characterContainer">
+
+                    </div>
 
                 </div>
 
@@ -129,18 +176,18 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalNameHeader"></h5>
+                    <h5 class="modal-title" id="nameHeader"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body">
-                    <h4 id="modalName" class="mb-2"></h4>
-                    <p id="modalDescription"></p>
+                    <h4 id="charactersName" class="mb-2"></h4>
+                    <p id="charactersDescription"></p>
 
                     <hr>
 
                     <p class="mb-2"><strong>Users:</strong></p>
-                    <div id="modalUsers"></div>
+                    <div id="styleUsers"></div>
                 </div>
 
             </div>
@@ -151,78 +198,195 @@
 
     <script>
 
-        const container = document.getElementById("characterContainer");
-        let allCharacters = [];
+        // ELEMENTS
+        const container =
+            document.getElementById("characterContainer");
 
-        // MODAL
-        const openCombatModal = (c) => {
+        // DATA
+        let allCombatStyles = [];
 
-            document.getElementById("modalName").textContent = c.name || "Unknown";
-            document.getElementById("modalNameHeader").textContent = c.name || "Character";
-            document.getElementById("modalDescription").textContent = c.description || "No description available.";
+        // Create user card
+        function createUserCard(user) {
 
-            const users = c.combat_style_character || [];
+            return `
+            <div class="border rounded p-2 mb-2">
 
-            document.getElementById("modalUsers").innerHTML =
-                users.length
-                    ? users.map(u => `
-                <div class="border rounded p-2 mb-2">
-                    <strong>No. ${u.id} - ${u.name}</strong>
-                    <p class="mb-0 small text-muted">${u.description}</p>
-                </div>
-            `).join("")
-                    : "<p class='text-muted'>No users found.</p>";
+                <strong>
+                    No. ${user.id || "N/A"} - ${user.name || "Unknown"}
+                </strong>
 
-            new bootstrap.Modal(document.getElementById("combatModal")).show();
-        };
+                <p class="mb-0 small text-muted">
+                    ${user.description || "No description available."}
+                </p>
 
-        // RENDER
-        const render = (data) => {
+            </div>
+            `;
+        }
 
-            container.innerHTML = data.map(c => `
-        <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+        // Create combat style card
+        function createCombatCard(combat) {
 
-            <div class="card mb-2 combat-card shadow-sm"
-                data-info='${JSON.stringify(c)}'
-                style="cursor:pointer">
+            return `
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
 
-                <div class="card-body d-flex align-items-center">
+                <div class="card mb-2 combat-card shadow-sm"
+                    data-info='${JSON.stringify(combat)}'
+                    style="cursor:pointer">
 
-                    <div style="min-width:70px;">
-                        <strong>No. ${c.id || "N/A"}</strong>
-                    </div>
+                    <div class="card-body d-flex align-items-center">
 
-                    <div style="flex:1;">
-                        <h6 class="mb-0">${c.name || "Unknown"}</h6>
+                        <div style="min-width:70px;">
+                            <strong>
+                                No. ${combat.id || "N/A"}
+                            </strong>
+                        </div>
+
+                        <div style="flex:1;">
+                            <h6 class="mb-0">
+                                ${combat.name || "Unknown"}
+                            </h6>
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
+            `;
+        }
 
-        </div>
-    `).join("");
+        // MODAL
+        function openCombatModal(character) {
 
-            document.querySelectorAll(".combat-card").forEach(card => {
-                card.onclick = () => openCombatModal(JSON.parse(card.dataset.info));
-            });
-        };
+            // TITLE
+            document.getElementById("charactersName").textContent =
+                character.name || "Unknown";
 
-        // FETCH
-        const getData = () => {
+            document.getElementById("nameHeader").textContent =
+                character.name || "Character";
 
-            fetch("https://www.demonslayer-api.com/api/v1/combat-styles?limit=50&page=1")
-                .then(res => res.json())
-                .then(data => {
-                    allCharacters = data.content || [];
-                    render(allCharacters);
+            // DESCRIPTION
+            document.getElementById("charactersDescription").textContent =
+                character.description || "No description available.";
+
+            // USERS
+            const users =
+                character.combat_style_character || [];
+
+            const styleUsers =
+                document.getElementById("styleUsers");
+
+            styleUsers.innerHTML = users.length
+
+                ? users.map(createUserCard).join("")
+
+                : `
+                <p class="text-muted">
+                    No users found.
+                </p>
+            `;
+
+            // SHOW MODAL
+            new bootstrap.Modal(
+                document.getElementById("combatModal")
+            ).show();
+        }
+
+        // RENDER        
+        function renderCombatStyles(data) {
+
+            if (!data.length) {
+
+                container.innerHTML = `
+                <div class="col-12">
+
+                    <div class="alert alert-danger text-center">
+                        No combat styles found.
+                    </div>
+
+                </div>
+            `;
+
+                return;
+            }
+
+            // DISPLAY CARDS
+            container.innerHTML =
+                data.map(createCombatCard).join("");
+
+            // CARD EVENTS
+            attachCardEvents();
+        }
+
+        // EVENTS        
+        function attachCardEvents() {
+
+            document.querySelectorAll(".combat-card")
+                .forEach(card => {
+
+                    card.addEventListener("click", () => {
+
+                        const combatData =
+                            JSON.parse(card.dataset.info);
+
+                        openCombatModal(combatData);
+                    });
+
                 });
+        }
 
-        };
+        // FETCH DATA
+        function getCombatStyles() {
 
-        getData();
+            try {
 
-    </script>   
+                const response = fetch(
+                    "https://www.demonslayer-api.com/api/v1/combat-styles?limit=50&page=1"
+                );
+
+                const data =  response.json();
+
+                allCombatStyles =
+                    data.content || [];
+
+                renderCombatStyles(allCombatStyles);
+
+            } catch (error) {
+
+                console.error(error);
+
+                container.innerHTML = `
+                <div class="col-12">
+
+                    <div class="alert alert-danger text-center">
+                        Failed to load combat styles.
+                    </div>
+
+                </div>
+            `;
+            }
+        }
+
+        getCombatStyles();
+
+    </script>
+
+    <script>
+        function autoCloseNavbar() {
+            const navbar = document.getElementById("navbarNav");
+
+            const bsCollapse = bootstrap.Collapse.getInstance(navbar);
+
+            if (bsCollapse) {
+                bsCollapse.hide();
+            }
+        }
+
+        document.querySelectorAll(".navbar-nav .nav-link")
+            .forEach(link => {
+                link.addEventListener("click", autoCloseNavbar);
+            });
+    </script>
 
 </body>
 

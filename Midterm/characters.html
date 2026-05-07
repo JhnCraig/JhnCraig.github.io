@@ -26,9 +26,21 @@
 
         .sticky-sidebar {
             position: sticky;
-            top: 5.5rem;
+            top: 90px;
             align-self: flex-start;
-            z-index: 1020;
+            z-index: 1050;
+        }
+
+        .navbar {
+            top: 0;
+            width: 100%;
+            z-index: 5000;
+        }
+
+        .sidebar {
+            top: 70px;
+            height: fit-content;
+            z-index: 1000;
         }
 
         .character-card {
@@ -40,8 +52,68 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
-        .navbar {
-            z-index: 1050 !important;
+        body {
+            padding-top: 70px;
+        }
+
+        .navbar-collapse {
+            background-color: #800000;
+            text-align: center;
+            z-index: 3100;
+        }
+
+        .navbar-nav .nav-link {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .character-card .card-body {
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .character-card .badge {
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 576px) {
+
+            .character-card .card-body {
+                align-items: flex-start !important;
+            }
+
+            .character-card h5 {
+                font-size: 16px;
+            }
+
+            .form-select-sm {
+                width: 120px !important;
+            }
+        }
+
+        @media (max-width: 991px) {
+
+            .sticky-sidebar {
+                margin-bottom: 25px;
+            }
+
+            .bg-white {
+                margin-top: 0 !important;
+            }
         }
     </style>
 </head>
@@ -49,13 +121,14 @@
 <body class="bg-dark">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-maroon fixed-top">
-        <div class="container-fluid" style="height: 62px;">
+    <nav class="navbar navbar-expand-md bg-maroon fixed-top shadow">
+        <div class="container-fluid">
+
             <a class="navbar-brand ms-3" href="#Home">
                 <h2>DEMON SLAYER</h2>
             </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -69,24 +142,31 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container-fluid px-3 mt-4">
 
-        <!-- ROW (STACK FIXED) -->
-        <div class="row flex-column flex-lg-row">
+        <div class="row g-3 flex-column flex-lg-row">
 
             <!-- SIDEBAR -->
-            <div class="col-12 col-lg-4 sticky-sidebar order-1 order-lg-1" style="margin-top: 78px;">
+            <div class="col-12 col-lg-4 sticky-sidebar order-1 order-lg-1">
 
-                <div class="bg-maroon p-4 rounded h-100 text-white">
+                <div class="bg-maroon p-4 rounded text-white">
 
-                    <h2 class="text-center mb-4">Characters</h2>
+                    <h2 class="text-center mb-4">
+                        Characters
+                    </h2>
 
                     <form class="d-flex mb-4">
+
                         <input class="form-control me-2" type="search" placeholder="Search">
-                        <button class="btn btn-outline-light">Search</button>
+
+                        <button class="btn btn-outline-light">
+                            Search
+                        </button>
+
                     </form>
 
                     <div class="d-flex justify-content-center mt-3">
@@ -94,13 +174,17 @@
                         <a href="combat.html" class="text-decoration-none">
 
                             <div class="card bg-light text-center mx-auto"
-                                style="width: 110px; height: 110px; cursor:pointer;">
+                                style="width: 140px; height: 140px; cursor:pointer;">
 
                                 <img src="https://tse1.mm.bing.net/th/id/OIP.ODvEHo24cD1j42I2gTY6pAHaFN?rs=1&pid=ImgDetMain&o=7&rm=3"
-                                    style="width: 100%; height: 80px; object-fit: contain;" class="card-img-top p-2">
+                                    class="card-img-top p-2" style="width:100%; height:95px; object-fit:contain;">
 
                                 <div class="card-body p-1 d-flex align-items-center justify-content-center">
-                                    <small class="fw-bold text-dark">Combat Styles</small>
+
+                                    <small class="fw-bold text-dark">
+                                        Combat Styles
+                                    </small>
+
                                 </div>
 
                             </div>
@@ -116,19 +200,27 @@
             <!-- MAIN -->
             <div class="col-12 col-lg-8 order-2 order-lg-2">
 
-                <div class="bg-white p-4 rounded h-100" style="margin-top: 78px;">
+                <div class="bg-white p-4 rounded">
 
-                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
 
-                        <h5 class="mb-0">Character List</h5>
+                        <h3 class="mb-0">
+                            Character List
+                        </h3>
 
-                        <select class="form-select form-select-sm" id="raceFilter" style="width: 160px;">
-                            <option value="all">All Races</option>
+                        <select class="form-select form-select-sm" id="raceFilter" style="width: 200px;">
+
+                            <option value="all">
+                                All Races
+                            </option>
+
                         </select>
 
                     </div>
 
-                    <div class="row g-2" id="characterContainer"></div>
+                    <div class="row g-3" id="characterContainer">
+
+                    </div>
 
                 </div>
 
@@ -152,23 +244,23 @@
                     <div class="row">
 
                         <div class="col-md-5 text-center">
-                            <img id="modalImg" class="img-fluid rounded" style="max-height: 300px;">
+                            <img id="charactersImg" class="img-fluid rounded" style="max-height: 300px;">
                         </div>
 
                         <div class="col-md-7">
-                            <h3 id="modalName"></h3>
+                            <h3 id="charactersName"></h3>
 
-                            <p><strong>Age:</strong> <span id="modalAge"></span></p>
-                            <p><strong>Gender:</strong> <span id="modalGender"></span></p>
-                            <p><strong>Race:</strong> <span id="modalRace"></span></p>
+                            <p><strong>Age:</strong> <span id="charactersAge"></span></p>
+                            <p><strong>Gender:</strong> <span id="charactersGender"></span></p>
+                            <p><strong>Race:</strong> <span id="charactersRace"></span></p>
 
                             <p class="mt-3">
                                 <strong>Description:</strong><br>
-                                <span id="modalDescription"></span>
+                                <span id="charactersDescription"></span>
                             </p>
 
                             <p class="mt-3 fst-italic">
-                                "<span id="modalQuote"></span>"
+                                "<span id="charactersQuote"></span>"
                             </p>
                         </div>
 
@@ -183,123 +275,247 @@
 
     <script>
 
+        // ELEMENTS
         const container = document.getElementById("characterContainer");
         const searchInput = document.querySelector("input[type='search']");
         const raceFilter = document.getElementById("raceFilter");
 
+        // DATA
         let allCharacters = [];
         let selectedRace = "all";
 
-        // MODAL
-        const openModal = (c) => {
+        // Get race badge color
+        function getRaceColor(race) {
 
-            document.getElementById("modalImg").src = c.img || c.image || "";
-            document.getElementById("modalName").textContent = c.name || "Unknown";
-            document.getElementById("modalAge").textContent = c.age || "N/A";
-            document.getElementById("modalGender").textContent = c.gender || "N/A";
-            document.getElementById("modalRace").textContent = c.race || "N/A";
-            document.getElementById("modalDescription").textContent = c.description || "No description available.";
-            document.getElementById("modalQuote").textContent = c.quote || "No quote available.";
+            const value = (race || "").toLowerCase();
 
-            new bootstrap.Modal(document.getElementById("characterModal")).show();
-        };
+            if (value === "human") return "bg-primary";
+            if (value === "demon") return "bg-danger";
 
-        // RENDER
-        const render = (data) => {
+            return "bg-secondary";
+        }
 
-            container.innerHTML = data.map(c => {
+        // Create card HTML
+        function createCharacterCard(c) {
 
-                const raceColor =
-                    c.race?.toLowerCase() === "human"
-                        ? "bg-primary"
-                        : c.race?.toLowerCase() === "demon"
-                            ? "bg-danger"
-                            : "bg-secondary";
+            return `
+        <div class="col-12">
+            <div class="card mb-2 character-card shadow-sm"
+                data-id='${JSON.stringify(c)}'
+                style="cursor:pointer">
 
-                return `
+                <div class="card-body d-flex justify-content-between align-items-center">
+
+                    <div style="min-width:120px;">
+                        <strong>No. ${c.id || "N/A"}</strong>
+                    </div>
+
+                    <div style="flex:1;">
+                        <h5 class="mb-0">
+                            ${c.name || "Unknown"}
+                        </h5>
+                    </div>
+
+                    <div style="min-width:120px; text-align:right;">
+                        <span class="badge ${getRaceColor(c.race)}">
+                            ${c.race || "N/A"}
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        `;
+        }
+
+        // Open modal
+        function openModal(character) {
+
+            document.getElementById("charactersImg").src =
+                character.img || character.image || "";
+
+            document.getElementById("charactersName").textContent =
+                character.name || "Unknown";
+
+            document.getElementById("charactersAge").textContent =
+                character.age || "N/A";
+
+            document.getElementById("charactersGender").textContent =
+                character.gender || "N/A";
+
+            document.getElementById("charactersRace").textContent =
+                character.race || "N/A";
+
+            document.getElementById("charactersDescription").textContent =
+                character.description || "No description available.";
+
+            document.getElementById("charactersQuote").textContent =
+                character.quote || "No quote available.";
+
+            new bootstrap.Modal(
+                document.getElementById("characterModal")
+            ).show();
+        }
+
+        // Attach click events
+        function attachCardEvents() {
+
+            document.querySelectorAll(".character-card")
+                .forEach(card => {
+
+                    card.addEventListener("click", () => {
+
+                        const character =
+                            JSON.parse(card.dataset.id);
+
+                        openModal(character);
+                    });
+
+                });
+        }
+
+        // Render characters
+        function renderCharacters(data) {
+
+            if (!data.length) {
+
+                container.innerHTML = `
                 <div class="col-12">
-                    <div class="card mb-2 character-card shadow-sm"
-                        data-id='${JSON.stringify(c)}'
-                        style="cursor:pointer">
-
-                        <div class="card-body d-flex justify-content-between align-items-center">
-
-                            <div style="min-width:120px;">
-                                <strong>No. ${c.id}</strong>
-                            </div>
-
-                            <div style="flex:1;">
-                                <h5 class="mb-0">${c.name || "Unknown"}</h5>
-                            </div>
-
-                            <div style="min-width:120px; text-align:right;">
-                                <span class="badge ${raceColor}">
-                                    ${c.race || "N/A"}
-                                </span>
-                            </div>
-
-                        </div>
+                    <div class="alert alert-danger text-center">
+                        No characters found.
                     </div>
                 </div>
-                `;
-            }).join("");
+            `;
 
-            document.querySelectorAll(".character-card").forEach(card => {
-                card.onclick = () => openModal(JSON.parse(card.dataset.id));
-            });
-        };
+                return;
+            }
 
-        // FILTER OPTIONS
-        const fillRaceOptions = (data) => {
+            container.innerHTML =
+                data.map(createCharacterCard).join("");
 
-            const races = [...new Set(data.map(c => c.race).filter(Boolean))];
+            attachCardEvents();
+        }
 
-            raceFilter.innerHTML =
-                `<option value="all">All Races</option>` +
-                races.map(r => `<option value="${r}">${r}</option>`).join("");
-        };
+        // Fill race dropdown
+        function fillRaceOptions(data) {
 
-        // FILTER
-        const applyFilters = () => {
+            const races = [
+                ...new Set(
+                    data
+                        .map(c => c.race)
+                        .filter(Boolean)
+                )
+            ];
 
-            const value = searchInput.value.toLowerCase();
+            raceFilter.innerHTML = `
+            <option value="all">All Races</option>
+            ${races.map(r =>
+                `<option value="${r}">${r}</option>`
+            ).join("")}
+        `;
+        }
+
+        // FILTER FUNCTIONS
+        function applyFilters() {
+
+            const searchValue =
+                searchInput.value.toLowerCase();
 
             const filtered = allCharacters
-                .filter(c =>
-                    (c.name || "").toLowerCase().includes(value) ||
-                    (c.race || "").toLowerCase().includes(value) ||
-                    String(c.id).includes(value)
-                )
-                .filter(c =>
-                    selectedRace === "all" || c.race === selectedRace
-                );
 
-            render(filtered);
-        };
+                .filter(c => {
 
-        // FETCH
-        const getData = () => {
+                    return (
+                        (c.name || "")
+                            .toLowerCase()
+                            .includes(searchValue)
 
-            fetch("https://www.demonslayer-api.com/api/v1/characters?limit=45&page=1")
-                .then(res => res.json())
-                .then(data => {
-                    allCharacters = data.content || [];
-                    render(allCharacters);
-                    fillRaceOptions(allCharacters);
+                        ||
+
+                        (c.race || "")
+                            .toLowerCase()
+                            .includes(searchValue)
+
+                        ||
+
+                        String(c.id)
+                            .includes(searchValue)
+                    );
+                })
+
+                .filter(c => {
+
+                    return (
+                        selectedRace === "all"
+                        ||
+                        c.race === selectedRace
+                    );
                 });
 
-        };
+            renderCharacters(filtered);
+        }
+
+
+        // FETCH DATA
+        function getCharacters() {
+
+            try {
+
+                const response = fetch(
+                    "https://www.demonslayer-api.com/api/v1/characters?limit=45&page=1"
+                );
+
+                const data = response.json();
+
+                allCharacters = data.content || [];
+
+                renderCharacters(allCharacters);
+
+                fillRaceOptions(allCharacters);
+
+            } catch (error) {
+
+                console.error(error);
+
+                container.innerHTML = `
+                <div class="col-12">
+                    <div class="alert alert-danger text-center">
+                        Failed to load characters.
+                    </div>
+                </div>
+            `;
+            }
+        }
 
         // EVENTS
-        searchInput.oninput = applyFilters;
+        searchInput.addEventListener("input", applyFilters);
 
-        raceFilter.onchange = (e) => {
+        raceFilter.addEventListener("change", (e) => {
+
             selectedRace = e.target.value;
+
             applyFilters();
-        };
+        });
 
-        getData();
+        getCharacters();
 
+    </script>
+
+    <script>
+        function autoCloseNavbar() {
+            const navbar = document.getElementById("navbarNav");
+
+            const bsCollapse = bootstrap.Collapse.getInstance(navbar);
+
+            if (bsCollapse) {
+                bsCollapse.hide();
+            }
+        }
+
+        document.querySelectorAll(".navbar-nav .nav-link")
+            .forEach(link => {
+                link.addEventListener("click", autoCloseNavbar);
+            });
     </script>
 
 </body>

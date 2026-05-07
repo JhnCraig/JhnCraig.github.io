@@ -25,25 +25,100 @@
         }
 
         .hero-section {
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            height: 90vh;
             position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            overflow: hidden;
         }
 
         .overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
         }
 
         .content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+        }
+
+        /* MOBILE */
+        @media (max-width: 576px) {
+
+            .hero-section {
+
+                /* removes gray gaps */
+                min-height: 100vh;
+
+                /* ensures full cover */
+                background-size: cover !important;
+                background-position: center !important;
+            }
+
+            .hero-section h1 {
+                font-size: 1.8rem;
+                padding: 0 10px;
+            }
+
+            .hero-section p {
+                font-size: 0.95rem;
+                padding: 0 15px;
+            }
+        }
+
+        /* iPad / Tablet FIX */
+        @media (max-width: 1024px) {
+
+            .hero-section {
+                min-height: 100vh;
+                /* fill screen nicely */
+                background-size: cover !important;
+                background-position: center !important;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+                padding: 0 15px;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+                padding: 0 20px;
+            }
+        }
+
+        body {
+            padding-top: 70px;
+        }
+
+        /* make dropdown behave like a block */
+        .navbar-collapse {
+            background-color: #800000;
+            text-align: center;
+        }
+
+        /* better spacing in dropdown */
+        .navbar-nav .nav-link {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        /* fix toggler visibility */
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         /* Zoom animation */
@@ -79,8 +154,9 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-maroon fixed-top">
-        <div class="container-fluid" style="height: 62px;">
+    <nav class="navbar navbar-expand-md bg-maroon fixed-top">
+        <div class="container-fluid">
+
             <a class="navbar-brand ms-3" href="#Home">
                 <h2>DEMON SLAYER</h2>
             </a>
@@ -89,17 +165,17 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active fs-6 me-4" aria-current="page" href="#Home">Home</a>
+                        <a class="nav-link active fs-6 me-4" href="#Home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-6 me-4" href="#features">Features</a>
                     </li>
                 </ul>
             </div>
+
         </div>
     </nav>
 
@@ -107,7 +183,7 @@
     <!-- Front -->
     <div id="Home"
         class="container-fluid hero-section d-flex align-items-center justify-content-center text-center text-white"
-        style="background-image: url('https://comicbook.com/wp-content/uploads/sites/4/2025/03/Demon-Slayer-Infinity-Castle-Movie-Poster-Upper-Ranks.jpg?resize=425'); margin-top: 78px;">
+        style="background-image: url('https://comicbook.com/wp-content/uploads/sites/4/2025/03/Demon-Slayer-Infinity-Castle-Movie-Poster-Upper-Ranks.jpg?resize=425');">
 
         <div class="overlay"></div>
 
@@ -127,34 +203,36 @@
 
             <div class="container pt-5">
 
-                <h2 id="features" class="text-center text-decoration-underline mt-3 mb-4">
+                <h2 id="features" class="text-center text-decoration-underline mt-3 mb-5">
                     Features
                 </h2>
 
                 <div class="row justify-content-center g-4 text-center mt-3">
-                    <div class="col-md-4 col-lg-3">
-                        <a href="characters.html" class="text-decoration-none">
-                            <div class="card h-100 rounded shadow" style="width: 260px; height: 110px; cursor:pointer;">
+                    <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
+                        <a href="characters.html" class="text-decoration-none w-100 d-flex justify-content-center">
+                            <div class="card feature-card shadow border-0" style="width: 260px; height: 210px;">
                                 <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d4cfdf7e-824a-4ffa-bf04-4253a6e64a25/dib70u8-ffd38a6d-f5ba-419c-b116-4b3879c12bc4.png/v1/fill/w_894,h_894/serious_zenitsu__by_3v4d_dib70u8-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2Q0Y2ZkZjdlLTgyNGEtNGZmYS1iZjA0LTQyNTNhNmU2NGEyNVwvZGliNzB1OC1mZmQzOGE2ZC1mNWJhLTQxOWMtYjExNi00YjM4NzljMTJiYzQucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.kneaIiyLqXrnGQHR3I2nlwPB-mdGPcaprVny-7zuFdM"
-                                    class="card-img-top mt-3" alt="" style="height: 140px; object-fit: contain;">
+                                    class="card-img-top feature-img" alt="Characters"
+                                    style="height: 140px; object-fit: contain;">
                                 <div class="card-body">
-                                    <h3>
-                                        <p class="card-text"><strong>Characters</strong></p>
-                                    </h3>
+                                    <h4 class="card-text fw-bold">
+                                        Characters
+                                    </h4>
                                 </div>
                             </div>
                         </a>
                     </div>
 
-                    <div class="col-md-4 col-lg-3">
-                        <a href="combat.html" class="text-decoration-none">
-                            <div class="card h-100 rounded shadow" style="width: 260px; height: 110px; cursor:pointer;">
-                                <img src="https://tse1.mm.bing.net/th/id/OIP.ODvEHo24cD1j42I2gTY6pAHaFN?rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top mt-3" alt=""
-                                    style="height: 140px; object-fit: contain; border-radius: 100%;">
+                    <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
+                        <a href="combat.html" class="text-decoration-none w-100 d-flex justify-content-center">
+                            <div class="card feature-card shadow border-0" style="width: 260px; height: 210px;">
+                                <img src="https://tse1.mm.bing.net/th/id/OIP.ODvEHo24cD1j42I2gTY6pAHaFN?rs=1&pid=ImgDetMain&o=7&rm=3"
+                                    class="card-img-top feature-img rounded-circle" alt="Combat Style"
+                                    style="height: 140px; object-fit: contain;">
                                 <div class="card-body">
-                                    <h3>
-                                        <p class="card-text"><strong>Combat Style</strong></p>
-                                    </h3>
+                                    <h4 class="card-text fw-bold">
+                                        Combat Style
+                                    </h4>
                                 </div>
                             </div>
                         </a>
@@ -190,6 +268,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
+    <script>
+        function autoCloseNavbar() {
+            const navbar = document.getElementById("navbarNav");
+
+            const bsCollapse = bootstrap.Collapse.getInstance(navbar);
+
+            if (bsCollapse) {
+                bsCollapse.hide();
+            }
+        }
+
+        document.querySelectorAll(".navbar-nav .nav-link")
+            .forEach(link => {
+                link.addEventListener("click", autoCloseNavbar);
+            });
+    </script>
+
 </body>
 
 </html>
