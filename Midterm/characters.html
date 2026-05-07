@@ -28,6 +28,20 @@
             position: sticky;
             top: 5.5rem;
             align-self: flex-start;
+            z-index: 1020;
+        }
+
+        .character-card {
+            transition: 0.2s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            z-index: 1050 !important;
         }
     </style>
 </head>
@@ -40,19 +54,18 @@
             <a class="navbar-brand ms-3" href="#Home">
                 <h2>DEMON SLAYER</h2>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active fs-6 me-4" aria-current="page" href="#Home">Home</a>
+                        <a class="nav-link active fs-6 me-4" href="index.html#Home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 me-4" href="#features">Features</a>
+                        <a class="nav-link fs-6 me-4" href="index.html#features">Features</a>
                     </li>
                 </ul>
             </div>
@@ -60,11 +73,15 @@
     </nav>
 
     <div class="container mt-4">
-        <div class="row">
+
+        <!-- ROW (STACK FIXED) -->
+        <div class="row flex-column flex-lg-row">
 
             <!-- SIDEBAR -->
-            <div class="col-auto sticky-sidebar" style="width: 420px; margin-top: 78px;">
+            <div class="col-12 col-lg-4 sticky-sidebar order-1 order-lg-1" style="margin-top: 78px;">
+
                 <div class="bg-maroon p-4 rounded h-100 text-white">
+
                     <h2 class="text-center mb-4">Characters</h2>
 
                     <form class="d-flex mb-4">
@@ -72,34 +89,39 @@
                         <button class="btn btn-outline-light">Search</button>
                     </form>
 
-                    <div class="mt-3">
+                    <div class="d-flex justify-content-center mt-3">
+
                         <a href="combat.html" class="text-decoration-none">
 
                             <div class="card bg-light text-center mx-auto"
                                 style="width: 110px; height: 110px; cursor:pointer;">
 
                                 <img src="https://tse1.mm.bing.net/th/id/OIP.ODvEHo24cD1j42I2gTY6pAHaFN?rs=1&pid=ImgDetMain&o=7&rm=3"
-                                    alt="Demon" style="width: 100%; height: 80px; object-fit: contain;"
-                                    class="card-img-top p-2">
+                                    style="width: 100%; height: 80px; object-fit: contain;" class="card-img-top p-2">
 
                                 <div class="card-body p-1 d-flex align-items-center justify-content-center">
-                                    <small class="fw-bold text-dark">Combat Style</small>
+                                    <small class="fw-bold text-dark">Combat Styles</small>
                                 </div>
+
                             </div>
+
                         </a>
+
                     </div>
+
                 </div>
+
             </div>
 
-            <!-- Characters -->
-            <div class="col">
+            <!-- MAIN -->
+            <div class="col-12 col-lg-8 order-2 order-lg-2">
+
                 <div class="bg-white p-4 rounded h-100" style="margin-top: 78px;">
 
                     <div class="d-flex justify-content-between align-items-center mb-3">
 
                         <h5 class="mb-0">Character List</h5>
 
-                        <!-- RACE FILTER -->
                         <select class="form-select form-select-sm" id="raceFilter" style="width: 160px;">
                             <option value="all">All Races</option>
                         </select>
@@ -109,85 +131,57 @@
                     <div class="row g-2" id="characterContainer"></div>
 
                 </div>
+
             </div>
 
-            <!-- Modal for Character -->
-            <div class="modal fade" id="characterModal" tabindex="-1">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
+        </div>
 
-                        <div class="modal-header">
-                            <h5 class="modal-title">Character Details</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="characterModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Character Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-md-5 text-center">
+                            <img id="modalImg" class="img-fluid rounded" style="max-height: 300px;">
                         </div>
 
-                        <div class="modal-body">
-                            <div class="row">
+                        <div class="col-md-7">
+                            <h3 id="modalName"></h3>
 
-                                <div class="col-md-5 text-center">
-                                    <img id="modalImg" class="img-fluid rounded" style="max-height: 300px;">
-                                </div>
+                            <p><strong>Age:</strong> <span id="modalAge"></span></p>
+                            <p><strong>Gender:</strong> <span id="modalGender"></span></p>
+                            <p><strong>Race:</strong> <span id="modalRace"></span></p>
 
-                                <div class="col-md-7">
-                                    <h3 id="modalName"></h3>
+                            <p class="mt-3">
+                                <strong>Description:</strong><br>
+                                <span id="modalDescription"></span>
+                            </p>
 
-                                    <p><strong>Age:</strong> <span id="modalAge"></span></p>
-                                    <p><strong>Gender:</strong> <span id="modalGender"></span></p>
-                                    <p><strong>Race:</strong> <span id="modalRace"></span></p>
-
-                                    <p class="mt-3">
-                                        <strong>Description:</strong><br>
-                                        <span id="modalDescription"></span>
-                                    </p>
-
-                                    <p class="mt-3 fst-italic">
-                                        "<span id="modalQuote"></span>"
-                                    </p>
-                                </div>
-
-                            </div>
+                            <p class="mt-3 fst-italic">
+                                "<span id="modalQuote"></span>"
+                            </p>
                         </div>
 
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-        </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        const openModal = (character) => {
-
-            document.getElementById("modalImg").src =
-                character.img || character.image || "";
-
-            document.getElementById("modalName").textContent =
-                character.name || "Unknown";
-
-            document.getElementById("modalAge").textContent =
-                character.age || "N/A";
-
-            document.getElementById("modalGender").textContent =
-                character.gender || "N/A";
-
-            document.getElementById("modalRace").textContent =
-                character.race || "N/A";
-
-            document.getElementById("modalDescription").textContent =
-                character.description || "No description available.";
-
-            document.getElementById("modalQuote").textContent =
-                character.quote || "No quote available.";
-
-            const modal = new bootstrap.Modal(document.getElementById("characterModal"));
-            modal.show();
-        };
 
         const container = document.getElementById("characterContainer");
         const searchInput = document.querySelector("input[type='search']");
@@ -196,40 +190,51 @@
         let allCharacters = [];
         let selectedRace = "all";
 
+        // MODAL
+        const openModal = (c) => {
+
+            document.getElementById("modalImg").src = c.img || c.image || "";
+            document.getElementById("modalName").textContent = c.name || "Unknown";
+            document.getElementById("modalAge").textContent = c.age || "N/A";
+            document.getElementById("modalGender").textContent = c.gender || "N/A";
+            document.getElementById("modalRace").textContent = c.race || "N/A";
+            document.getElementById("modalDescription").textContent = c.description || "No description available.";
+            document.getElementById("modalQuote").textContent = c.quote || "No quote available.";
+
+            new bootstrap.Modal(document.getElementById("characterModal")).show();
+        };
+
         // RENDER
-        const render = (characters) => {
-            let output = "";
+        const render = (data) => {
 
-            characters.forEach((character) => {
+            container.innerHTML = data.map(c => {
 
-                // 🎨 RACE COLOR LOGIC
-                let raceColor = "bg-secondary";
+                const raceColor =
+                    c.race?.toLowerCase() === "human"
+                        ? "bg-primary"
+                        : c.race?.toLowerCase() === "demon"
+                            ? "bg-danger"
+                            : "bg-secondary";
 
-                if (character.race?.toLowerCase() === "human") {
-                    raceColor = "bg-primary"; // blue
-                } else if (character.race?.toLowerCase() === "demon") {
-                    raceColor = "bg-danger"; // red
-                }
-
-                output += `
+                return `
                 <div class="col-12">
-                    <div class="card shadow-sm mb-2 character-card" 
-                        style="cursor:pointer"
-                        data-id='${JSON.stringify(character)}'>
+                    <div class="card mb-2 character-card shadow-sm"
+                        data-id='${JSON.stringify(c)}'
+                        style="cursor:pointer">
 
-                        <div class="card-body d-flex align-items-center justify-content-between">
+                        <div class="card-body d-flex justify-content-between align-items-center">
 
                             <div style="min-width:120px;">
-                                <strong>No. ${character.id}</strong>
+                                <strong>No. ${c.id}</strong>
                             </div>
 
                             <div style="flex:1;">
-                                <h5 class="mb-0">${character.name || "Unknown"}</h5>
+                                <h5 class="mb-0">${c.name || "Unknown"}</h5>
                             </div>
 
                             <div style="min-width:120px; text-align:right;">
                                 <span class="badge ${raceColor}">
-                                    ${character.race || "N/A"}
+                                    ${c.race || "N/A"}
                                 </span>
                             </div>
 
@@ -237,78 +242,64 @@
                     </div>
                 </div>
                 `;
-            });
+            }).join("");
 
-            container.innerHTML = output;
-
-            // CLICK EVENTS (keep yours)
             document.querySelectorAll(".character-card").forEach(card => {
-                card.addEventListener("click", () => {
-                    const data = JSON.parse(card.dataset.id);
-                    openModal(data);
-                });
+                card.onclick = () => openModal(JSON.parse(card.dataset.id));
             });
         };
 
-        // FILL RACE DROPDOWN
-        const fillRaceOptions = (characters) => {
-            const races = [...new Set(characters.map(c => c.race).filter(Boolean))];
+        // FILTER OPTIONS
+        const fillRaceOptions = (data) => {
 
-            races.forEach(race => {
-                const option = document.createElement("option");
-                option.value = race;
-                option.textContent = race;
-                raceFilter.appendChild(option);
-            });
+            const races = [...new Set(data.map(c => c.race).filter(Boolean))];
+
+            raceFilter.innerHTML =
+                `<option value="all">All Races</option>` +
+                races.map(r => `<option value="${r}">${r}</option>`).join("");
         };
 
-        // FILTER LOGIC (search + race)
+        // FILTER
         const applyFilters = () => {
-            const searchValue = searchInput.value.toLowerCase();
 
-            const filtered = allCharacters.filter((char) => {
-                const matchSearch =
-                    char.name?.toLowerCase().includes(searchValue) ||
-                    char.race?.toLowerCase().includes(searchValue) ||
-                    String(char.id).includes(searchValue);
+            const value = searchInput.value.toLowerCase();
 
-                const matchRace =
-                    selectedRace === "all" || char.race === selectedRace;
-
-                return matchSearch && matchRace;
-            });
+            const filtered = allCharacters
+                .filter(c =>
+                    (c.name || "").toLowerCase().includes(value) ||
+                    (c.race || "").toLowerCase().includes(value) ||
+                    String(c.id).includes(value)
+                )
+                .filter(c =>
+                    selectedRace === "all" || c.race === selectedRace
+                );
 
             render(filtered);
         };
 
-        // FETCH DATA
-        const getData = async () => {
-            try {
-                const response = await fetch(
-                    "https://www.demonslayer-api.com/api/v1/characters?limit=45&page=1"
-                );
+        // FETCH
+        const getData = () => {
 
-                const data = await response.json();
-                allCharacters = data.content || [];
+            fetch("https://www.demonslayer-api.com/api/v1/characters?limit=45&page=1")
+                .then(res => res.json())
+                .then(data => {
+                    allCharacters = data.content || [];
+                    render(allCharacters);
+                    fillRaceOptions(allCharacters);
+                });
 
-                render(allCharacters);
-                fillRaceOptions(allCharacters);
-
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
         };
 
-        // SEARCH INPUT
-        searchInput.addEventListener("input", applyFilters);
+        // EVENTS
+        searchInput.oninput = applyFilters;
 
-        // RACE FILTER
-        raceFilter.addEventListener("change", (e) => {
+        raceFilter.onchange = (e) => {
             selectedRace = e.target.value;
             applyFilters();
-        });
+        };
 
         getData();
+
     </script>
 
 </body>
