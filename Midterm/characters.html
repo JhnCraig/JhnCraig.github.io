@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Demon Slayer - Characters</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -124,6 +124,10 @@
                 margin-top: 0 !important;
             }
         }
+
+        .modal-z{
+            z-index: 5000;
+        }
     </style>
 </head>
 
@@ -134,11 +138,11 @@
         <div class="container-fluid">
 
             <a class="navbar-brand ms-3" href="#Home">
-                <h2>DEMON SLAYER</h2>
+                <div class="h2">DEMON SLAYER</div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <div class="span navbar-toggler-icon"></div>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -164,9 +168,9 @@
 
                 <div class="bg-maroon p-4 rounded text-white">
 
-                    <h2 class="text-center mb-4">
+                    <div class="h2 text-center mb-4">
                         Characters
-                    </h2>
+                    </div>
 
                     <form class="d-flex mb-4">
 
@@ -213,9 +217,9 @@
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
 
-                        <h3 class="mb-0">
+                        <div class="h3 mb-0">
                             Character List
-                        </h3>
+                        </div>
 
                         <select class="form-select form-select-sm" id="raceFilter" style="width: 200px;">
 
@@ -240,12 +244,12 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="characterModal" tabindex="-1">
+    <div class="modal fade modal-z" id="characterModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title">Character Details</h5>
+                    <div class="modal-title h5">Character Details</div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
@@ -257,20 +261,20 @@
                         </div>
 
                         <div class="col-md-7">
-                            <h3 id="charactersName"></h3>
+                            <div id="charactersName" class="h3"></div>
 
-                            <p><strong>Age:</strong> <span id="charactersAge"></span></p>
-                            <p><strong>Gender:</strong> <span id="charactersGender"></span></p>
-                            <p><strong>Race:</strong> <span id="charactersRace"></span></p>
+                            <div class="p"><strong>Age:</strong> <span id="charactersAge"></span></div>
+                            <div class="p"><strong>Gender:</strong> <span id="charactersGender"></span></div>
+                            <div class="p"><strong>Race:</strong> <span id="charactersRace"></span></div>
 
-                            <p class="mt-3">
+                            <div class="mt-3 p">
                                 <strong>Description:</strong><br>
-                                <span id="charactersDescription"></span>
-                            </p>
+                                <div class="span" id="charactersDescription"></div>
+                            </div>
 
-                            <p class="mt-3 fst-italic">
+                            <div class="p mt-3 fst-italic">
                                 "<span id="charactersQuote"></span>"
-                            </p>
+                            </div>
                         </div>
 
                     </div>
@@ -320,9 +324,9 @@
                     </div>
 
                     <div style="flex:1;">
-                        <h5 class="mb-0">
+                        <div class="h5" class="mb-0">
                             ${c.name || "Unknown"}
-                        </h5>
+                        </div>
                     </div>
 
                     <div style="min-width:120px; text-align:right;">
