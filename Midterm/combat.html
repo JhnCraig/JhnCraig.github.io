@@ -45,7 +45,16 @@
             position: sticky;
             top: 90px;
             align-self: flex-start;
-            z-index: 1050;
+            z-index: 2000;
+        }
+
+        @media (max-width: 991px) {
+
+            .sticky-sidebar {
+                position: static;
+                top: auto;
+            }
+
         }
 
         .navbar {
