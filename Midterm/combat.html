@@ -118,7 +118,7 @@
         /* SEARCH ALWAYS DARK */
         .search-box {
             background-color: #ffffff !important;
-            color: white !important;
+            color: #212529 !important;
             border: 1px solid #444 !important;
         }
 
@@ -222,10 +222,10 @@
                     <div class="text-center mb-4 h2">Combat Style</div>
 
                     <form class="d-flex mb-4">
-                        <input class="form-control search-box me-2" type="search" placeholder="Search">
+                        <input id="searchInput" class="form-control search-box me-2" type="search" placeholder="Search">
 
-                        <button class="btn btn-outline-light">
-                            Search
+                        <button id="clearBtn" class="btn btn-outline-light" style="width: 130px;">
+                            Clear
                         </button>
                     </form>
 
@@ -304,8 +304,19 @@
     <script>
 
         // ELEMENTS
-        const container =
-            document.getElementById("characterContainer");
+        const container = document.getElementById("characterContainer");
+        const searchInput = document.querySelector("input[type='search']");
+        const clearBtn = document.getElementById("clearBtn");
+
+        searchInput.addEventListener("input", applyFilters);
+
+        // CLEAR BUTTON
+        clearBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            searchInput.value = "";
+            applyFilters();
+        });
+
 
         // DATA
         let allCombatStyles = [];
@@ -423,6 +434,31 @@
             attachCardEvents();
         }
 
+        //Search Function
+        function applyFilters() {
+
+            const searchValue = searchInput.value.toLowerCase();
+
+            const filtered = allCombatStyles
+
+                .filter(c => {
+
+                    return (
+                        (c.name || "")
+                            .toLowerCase()
+                            .includes(searchValue)
+
+                        ||
+
+                        String(c.id || "")
+                            .includes(searchValue)
+                    );
+                });
+
+            renderCombatStyles(filtered);
+        }
+
+
         // EVENTS        
         function attachCardEvents() {
 
@@ -489,8 +525,9 @@
                 link.addEventListener("click", autoCloseNavbar);
             });
 
+
         // Dark Mode
-        var mode = "Light";
+        //var mode = "Light";
         var body = document.getElementById("body");
         var modeBtn = document.getElementById("modeBtn");
 

@@ -165,7 +165,7 @@
         /* SEARCH ALWAYS DARK */
         .search-box {
             background-color: #ffffff !important;
-            color: white !important;
+            color: #212529 !important;
             border: 1px solid #444 !important;
         }
 
@@ -288,8 +288,8 @@
 
                         <input class="form-control search-box me-2 " type="search" placeholder="Search">
 
-                        <button class="btn btn-outline-light">
-                            Search
+                        <button id="clearBtn" class="btn btn-outline-light " style="width: 130px;">
+                            Clear
                         </button>
 
                     </form>
@@ -393,7 +393,18 @@
             // ELEMENTS
             const container = document.getElementById("characterContainer");
             const searchInput = document.querySelector("input[type='search']");
+            const clearBtn = document.getElementById("clearBtn");
             const raceFilter = document.getElementById("raceFilter");
+            
+            searchInput.addEventListener("input", applyFilters);
+
+            // CLEAR BUTTON
+            clearBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                searchInput.value = "";
+                applyFilters();
+            });
+
 
             // DATA
             let allCharacters = [];
@@ -629,7 +640,7 @@
                 });
 
             // Dark Mode
-            var mode = "Light";
+            //var mode = "Light";
             var body = document.getElementById("body");
             var modeBtn = document.getElementById("modeBtn");
 
