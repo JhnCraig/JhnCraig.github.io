@@ -78,13 +78,106 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
-        .modal-z{
+        .modal-z {
             z-index: 5000;
+        }
+
+        /* Feature card border adapts to theme */
+        .feature-card {
+            background-color: white !important;
+            color: black !important;
+
+            border-radius: 15px !important;
+            transition: 0.3s ease;
+        }
+
+        /* LIGHT MODE */
+        [data-bs-theme="light"] .feature-card {
+            border: 3px solid #800000 !important;
+
+            box-shadow: 0 0 15px rgba(128, 0, 0, 0.4);
+        }
+
+        /* DARK MODE */
+        [data-bs-theme="dark"] .feature-card {
+            border: 3px solid #ff4d4d !important;
+
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.5);
+        }
+
+        .feature-card .card-body,
+        .feature-card .card-text,
+        .feature-card .h4 {
+            color: black !important;
+        }
+
+        #modeBtn {
+            width: 130px;
+        }
+
+        /* SEARCH ALWAYS DARK */
+        .search-box {
+            background-color: #ffffff !important;
+            color: white !important;
+            border: 1px solid #444 !important;
+        }
+
+        .search-box::placeholder {
+            color: #212529 !important;
+        }
+
+        /* DEFAULT = WHITE */
+        #characterMain {
+            background-color: #212529;
+            color: rgb(255, 255, 255);
+            transition: 0.3s ease;
+        }
+
+        /* DARK MODE */
+        [data-bs-theme="dark"] #characterMain {
+            background-color: #ffffff;
+            color: #212529;
+        }
+
+        /* Modal*/
+        .theme-modal .modal-content {
+            background-color: #212529;
+            color: #ffffff;
+            transition: 0.3s ease;
+        }
+
+        .theme-modal .modal-header,
+        .theme-modal .modal-footer,
+        .theme-modal .modal-body {
+            background-color: #212529;
+            color: #ffffff;
+        }
+
+        /* DARK MODE */
+        [data-bs-theme="dark"] .theme-modal .modal-content {
+            background-color: #ffffff;
+            color: #212529;
+        }
+
+        [data-bs-theme="dark"] .theme-modal .modal-header,
+        [data-bs-theme="dark"] .theme-modal .modal-footer,
+        [data-bs-theme="dark"] .theme-modal .modal-body {
+            background-color: #ffffff;
+            color: #212529;
+        }
+
+        /* CLOSE BUTTON */
+        .btn-close {
+            filter: none;
+        }
+
+        [data-bs-theme="dark"] .btn-close {
+            filter: none;
         }
     </style>
 </head>
 
-<body class="bg-dark">
+<body id="body" data-bs-theme="dark">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md bg-maroon fixed-top shadow">
@@ -107,6 +200,11 @@
                         <a class="nav-link fs-6 me-4" href="index.html#features">Features</a>
                     </li>
                 </ul>
+
+                <button id="modeBtn" onclick="switchTheme()" class="btn btn-maroon text-white shadow me-3">
+                    Dark Mode
+                </button>
+
             </div>
 
         </div>
@@ -119,26 +217,22 @@
 
             <!-- SIDEBAR -->
             <div class="col-12 col-lg-4 sticky-sidebar order-1 order-lg-1 fixed-top-lg">
-
                 <div class="bg-maroon p-4 rounded text-white">
 
                     <div class="text-center mb-4 h2">Combat Style</div>
 
                     <form class="d-flex mb-4">
-
-                        <input class="form-control me-2" type="search" placeholder="Search">
+                        <input class="form-control search-box me-2" type="search" placeholder="Search">
 
                         <button class="btn btn-outline-light">
                             Search
                         </button>
-
                     </form>
 
                     <div class="d-flex justify-content-center mt-3">
-
                         <a href="characters.html" class="text-decoration-none">
 
-                            <div class="card bg-light text-center mx-auto"
+                            <div class="card bg-light text-center mx-auto feature-card"
                                 style="width: 140px; height: 140px; cursor:pointer;">
 
                                 <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d4cfdf7e-824a-4ffa-bf04-4253a6e64a25/dib70u8-ffd38a6d-f5ba-419c-b116-4b3879c12bc4.png/v1/fill/w_894,h_894/serious_zenitsu__by_3v4d_dib70u8-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2Q0Y2ZkZjdlLTgyNGEtNGZmYS1iZjA0LTQyNTNhNmU2NGEyNVwvZGliNzB1OC1mZmQzOGE2ZC1mNWJhLTQxOWMtYjExNi00YjM4NzljMTJiYzQucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.kneaIiyLqXrnGQHR3I2nlwPB-mdGPcaprVny-7zuFdM"
@@ -155,17 +249,15 @@
                             </div>
 
                         </a>
-
                     </div>
 
                 </div>
-
             </div>
 
             <!-- MAIN -->
             <div class="col-12 col-lg-8 order-2 order-lg-2">
 
-                <div class="bg-white p-4 rounded">
+                <div id="characterMain" class="main-panel p-4 rounded">
 
                     <div class="mb-4 h3">
                         Combat Styles
@@ -184,7 +276,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade modal-z" id="combatModal" tabindex="-1">
+    <div class="modal fade modal-z theme-modal" id="combatModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
 
@@ -242,7 +334,7 @@
             return `
             <div class="col-12 col-sm-6 col-md-6 col-lg-4">
 
-                <div class="card mb-2 combat-card shadow-sm"
+                <div id="characterMain" class="card mb-2 combat-card shadow border"
                     data-info='${JSON.stringify(combat)}'
                     style="cursor:pointer">
 
@@ -396,6 +488,27 @@
             .forEach(link => {
                 link.addEventListener("click", autoCloseNavbar);
             });
+
+        // Dark Mode
+        var mode = "Light";
+        var body = document.getElementById("body");
+        var modeBtn = document.getElementById("modeBtn");
+
+        // Get the current theme from the body
+        var mode = body.getAttribute("data-bs-theme") === "dark" ? "Dark" : "Light";
+        modeBtn.innerText = mode === "Dark" ? "Light Mode" : "Dark Mode";
+
+        function switchTheme() {
+            if (mode == "Light") {
+                mode = "Dark";
+                modeBtn.innerText = "Light Mode";
+            } else {
+                mode = "Light";
+                modeBtn.innerText = "Dark Mode";
+            }
+
+            body.setAttribute("data-bs-theme", mode.toLowerCase());
+        }
     </script>
 
 </body>

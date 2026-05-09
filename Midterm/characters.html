@@ -125,13 +125,122 @@
             }
         }
 
-        .modal-z{
+        .modal-z {
             z-index: 5000;
+        }
+
+        /* Feature card border adapts to theme */
+        .feature-card {
+            background-color: white !important;
+            color: black !important;
+
+            border-radius: 15px !important;
+            transition: 0.3s ease;
+        }
+
+        /* LIGHT MODE */
+        [data-bs-theme="light"] .feature-card {
+            border: 3px solid #800000 !important;
+
+            box-shadow: 0 0 15px rgba(128, 0, 0, 0.4);
+        }
+
+        /* DARK MODE */
+        [data-bs-theme="dark"] .feature-card {
+            border: 3px solid #ff4d4d !important;
+
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.5);
+        }
+
+        .feature-card .card-body,
+        .feature-card .card-text,
+        .feature-card .h4 {
+            color: black !important;
+        }
+
+        #modeBtn {
+            width: 130px;
+        }
+
+        /* SEARCH ALWAYS DARK */
+        .search-box {
+            background-color: #ffffff !important;
+            color: white !important;
+            border: 1px solid #444 !important;
+        }
+
+        .search-box::placeholder {
+            color: #212529 !important;
+        }
+
+        /* FULL CHARACTER SECTION WRAPPER */
+        .character-section {
+            transition: 0.3s ease;
+        }
+
+        #characterMain {
+            background-color: #212529;
+            color: #ffffff;
+            transition: 0.3s ease;
+        }
+
+        /* DARK MODE */
+        [data-bs-theme="dark"] #characterMain {
+            background-color: #ffffff;
+            color: #212529;
+        }
+
+        .filter-panel {
+            background-color: #212529;
+            color: #ffffff;
+            transition: 0.3s ease;
+        }
+
+        /* DARK MODE */
+        [data-bs-theme="dark"] .filter-panel {
+            background-color: #ffffff;
+            color: #212529;
+        }
+
+        /* Modal*/
+        .theme-modal .modal-content {
+            background-color: #212529;
+            color: #ffffff;
+            transition: 0.3s ease;
+        }
+
+        .theme-modal .modal-header,
+        .theme-modal .modal-footer,
+        .theme-modal .modal-body {
+            background-color: #212529;
+            color: #ffffff;
+        }
+
+        /* DARK MODE */
+        [data-bs-theme="dark"] .theme-modal .modal-content {
+            background-color: #ffffff;
+            color: #212529;
+        }
+
+        [data-bs-theme="dark"] .theme-modal .modal-header,
+        [data-bs-theme="dark"] .theme-modal .modal-footer,
+        [data-bs-theme="dark"] .theme-modal .modal-body {
+            background-color: #ffffff;
+            color: #212529;
+        }
+
+        /* CLOSE BUTTON */
+        .btn-close {
+            filter: none;
+        }
+
+        [data-bs-theme="dark"] .btn-close {
+            filter: none;
         }
     </style>
 </head>
 
-<body class="bg-dark">
+<body id="body" data-bs-theme="dark">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md bg-maroon fixed-top shadow">
@@ -154,18 +263,21 @@
                         <a class="nav-link fs-6 me-4" href="index.html#features">Features</a>
                     </li>
                 </ul>
+
+                <button id="modeBtn" onclick="switchTheme()" class="btn btn-maroon text-white shadow me-3">
+                    Dark Mode
+                </button>
+
             </div>
 
         </div>
     </nav>
 
-    <div class="container-fluid px-3 mt-4">
-
+    <div class="container-fluid px-3 mt-4 character-section">
         <div class="row g-3 flex-column flex-lg-row">
 
             <!-- SIDEBAR -->
             <div class="col-12 col-lg-4 sticky-sidebar order-1 order-lg-1">
-
                 <div class="bg-maroon p-4 rounded text-white">
 
                     <div class="h2 text-center mb-4">
@@ -174,7 +286,7 @@
 
                     <form class="d-flex mb-4">
 
-                        <input class="form-control me-2" type="search" placeholder="Search">
+                        <input class="form-control search-box me-2 " type="search" placeholder="Search">
 
                         <button class="btn btn-outline-light">
                             Search
@@ -183,10 +295,9 @@
                     </form>
 
                     <div class="d-flex justify-content-center mt-3">
-
                         <a href="combat.html" class="text-decoration-none">
 
-                            <div class="card bg-light text-center mx-auto"
+                            <div class="card bg-light text-center mx-auto feature-card"
                                 style="width: 140px; height: 140px; cursor:pointer;">
 
                                 <img src="https://tse1.mm.bing.net/th/id/OIP.ODvEHo24cD1j42I2gTY6pAHaFN?rs=1&pid=ImgDetMain&o=7&rm=3"
@@ -203,7 +314,6 @@
                             </div>
 
                         </a>
-
                     </div>
 
                 </div>
@@ -211,22 +321,18 @@
             </div>
 
             <!-- MAIN -->
-            <div class="col-12 col-lg-8 order-2 order-lg-2">
-
-                <div class="bg-white p-4 rounded">
+            <div class="col-12 col-lg-8 order-2 order-lg-2 ">
+                <div id="characterMain" class="main-panel p-4 rounded">
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
-
                         <div class="h3 mb-0">
                             Character List
                         </div>
 
-                        <select class="form-select form-select-sm" id="raceFilter" style="width: 200px;">
-
+                        <select class="form-select form-select-sm filter-panel" id="raceFilter" style="width: 200px;">
                             <option value="all">
                                 All Races
                             </option>
-
                         </select>
 
                     </div>
@@ -234,165 +340,161 @@
                     <div class="row g-3" id="characterContainer">
 
                     </div>
-
                 </div>
 
             </div>
-
         </div>
 
-    </div>
+        <!-- Modal -->
+        <div class="modal fade modal-z theme-modal" id="characterModal" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
 
-    <!-- Modal -->
-    <div class="modal fade modal-z" id="characterModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title h5">Character Details</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
 
-                <div class="modal-header">
-                    <div class="modal-title h5">Character Details</div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
+                    <div class="modal-body">
+                        <div class="row">
 
-                <div class="modal-body">
-                    <div class="row">
-
-                        <div class="col-md-5 text-center">
-                            <img id="charactersImg" class="img-fluid rounded" style="max-height: 300px;">
-                        </div>
-
-                        <div class="col-md-7">
-                            <div id="charactersName" class="h3"></div>
-
-                            <div class="p"><strong>Age:</strong> <span id="charactersAge"></span></div>
-                            <div class="p"><strong>Gender:</strong> <span id="charactersGender"></span></div>
-                            <div class="p"><strong>Race:</strong> <span id="charactersRace"></span></div>
-
-                            <div class="mt-3 p">
-                                <strong>Description:</strong><br>
-                                <div class="span" id="charactersDescription"></div>
+                            <div class="col-md-5 text-center">
+                                <img id="charactersImg" class="img-fluid rounded" style="max-height: 300px;">
                             </div>
 
-                            <div class="p mt-3 fst-italic">
-                                "<span id="charactersQuote"></span>"
+                            <div class="col-md-7">
+                                <div id="charactersName" class="h3"></div>
+
+                                <div class="p"><strong>Age:</strong> <span id="charactersAge"></span></div>
+                                <div class="p"><strong>Gender:</strong> <span id="charactersGender"></span></div>
+                                <div class="p"><strong>Race:</strong> <span id="charactersRace"></span></div>
+
+                                <div class="mt-3 p">
+                                    <strong>Description:</strong><br>
+                                    <div class="span" id="charactersDescription"></div>
+                                </div>
+
+                                <div class="p mt-3 fst-italic">
+                                    "<span id="charactersQuote"></span>"
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+
+            // ELEMENTS
+            const container = document.getElementById("characterContainer");
+            const searchInput = document.querySelector("input[type='search']");
+            const raceFilter = document.getElementById("raceFilter");
+
+            // DATA
+            let allCharacters = [];
+            let selectedRace = "all";
+
+            // Get race badge color
+            function getRaceColor(race) {
+
+                const value = (race || "").toLowerCase();
+
+                if (value === "human") return "bg-primary";
+                if (value === "demon") return "bg-danger";
+
+                return "bg-secondary";
+            }
+
+            // Create card HTML
+            function createCharacterCard(c) {
+
+                return `
+            <div class="col-12">
+                <div id="characterMain" class="card mb-2 character-card shadow border"
+                    data-id='${JSON.stringify(c)}'
+                    style="cursor:pointer">
+
+                    <div class="card-body d-flex justify-content-between align-items-center">
+
+                        <div style="min-width:120px;">
+                            <strong>No. ${c.id || "N/A"}</strong>
+                        </div>
+
+                        <div style="flex:1;">
+                            <div class="h5" class="mb-0">
+                                ${c.name || "Unknown"}
                             </div>
                         </div>
 
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-
-        // ELEMENTS
-        const container = document.getElementById("characterContainer");
-        const searchInput = document.querySelector("input[type='search']");
-        const raceFilter = document.getElementById("raceFilter");
-
-        // DATA
-        let allCharacters = [];
-        let selectedRace = "all";
-
-        // Get race badge color
-        function getRaceColor(race) {
-
-            const value = (race || "").toLowerCase();
-
-            if (value === "human") return "bg-primary";
-            if (value === "demon") return "bg-danger";
-
-            return "bg-secondary";
-        }
-
-        // Create card HTML
-        function createCharacterCard(c) {
-
-            return `
-        <div class="col-12">
-            <div class="card mb-2 character-card shadow-sm"
-                data-id='${JSON.stringify(c)}'
-                style="cursor:pointer">
-
-                <div class="card-body d-flex justify-content-between align-items-center">
-
-                    <div style="min-width:120px;">
-                        <strong>No. ${c.id || "N/A"}</strong>
-                    </div>
-
-                    <div style="flex:1;">
-                        <div class="h5" class="mb-0">
-                            ${c.name || "Unknown"}
+                        <div style="min-width:120px; text-align:right;">
+                            <span class="badge ${getRaceColor(c.race)}">
+                                ${c.race || "N/A"}
+                            </span>
                         </div>
-                    </div>
 
-                    <div style="min-width:120px; text-align:right;">
-                        <span class="badge ${getRaceColor(c.race)}">
-                            ${c.race || "N/A"}
-                        </span>
                     </div>
-
                 </div>
             </div>
-        </div>
-        `;
-        }
+            `;
+            }
 
-        // Open modal
-        function openModal(character) {
+            // Open modal
+            function openModal(character) {
 
-            document.getElementById("charactersImg").src =
-                character.img || character.image || "";
+                document.getElementById("charactersImg").src =
+                    character.img || character.image || "";
 
-            document.getElementById("charactersName").textContent =
-                character.name || "Unknown";
+                document.getElementById("charactersName").textContent =
+                    character.name || "Unknown";
 
-            document.getElementById("charactersAge").textContent =
-                character.age || "N/A";
+                document.getElementById("charactersAge").textContent =
+                    character.age || "N/A";
 
-            document.getElementById("charactersGender").textContent =
-                character.gender || "N/A";
+                document.getElementById("charactersGender").textContent =
+                    character.gender || "N/A";
 
-            document.getElementById("charactersRace").textContent =
-                character.race || "N/A";
+                document.getElementById("charactersRace").textContent =
+                    character.race || "N/A";
 
-            document.getElementById("charactersDescription").textContent =
-                character.description || "No description available.";
+                document.getElementById("charactersDescription").textContent =
+                    character.description || "No description available.";
 
-            document.getElementById("charactersQuote").textContent =
-                character.quote || "No quote available.";
+                document.getElementById("charactersQuote").textContent =
+                    character.quote || "No quote available.";
 
-            new bootstrap.Modal(
-                document.getElementById("characterModal")
-            ).show();
-        }
+                new bootstrap.Modal(
+                    document.getElementById("characterModal")
+                ).show();
+            }
 
-        // Attach click events
-        function attachCardEvents() {
+            // Attach click events
+            function attachCardEvents() {
 
-            document.querySelectorAll(".character-card")
-                .forEach(card => {
+                document.querySelectorAll(".character-card")
+                    .forEach(card => {
 
-                    card.addEventListener("click", () => {
+                        card.addEventListener("click", () => {
 
-                        const character =
-                            JSON.parse(card.dataset.id);
+                            const character =
+                                JSON.parse(card.dataset.id);
 
-                        openModal(character);
+                            openModal(character);
+                        });
+
                     });
+            }
 
-                });
-        }
+            // Render characters
+            function renderCharacters(data) {
 
-        // Render characters
-        function renderCharacters(data) {
+                if (!data.length) {
 
-            if (!data.length) {
-
-                container.innerHTML = `
+                    container.innerHTML = `
                 <div class="col-12">
                     <div class="alert alert-danger text-center">
                         No characters found.
@@ -400,132 +502,153 @@
                 </div>
             `;
 
-                return;
+                    return;
+                }
+
+                container.innerHTML =
+                    data.map(createCharacterCard).join("");
+
+                attachCardEvents();
             }
 
-            container.innerHTML =
-                data.map(createCharacterCard).join("");
+            // Fill race dropdown
+            function fillRaceOptions(data) {
 
-            attachCardEvents();
-        }
+                const races = [
+                    ...new Set(
+                        data
+                            .map(c => c.race)
+                            .filter(Boolean)
+                    )
+                ];
 
-        // Fill race dropdown
-        function fillRaceOptions(data) {
-
-            const races = [
-                ...new Set(
-                    data
-                        .map(c => c.race)
-                        .filter(Boolean)
-                )
-            ];
-
-            raceFilter.innerHTML = `
+                raceFilter.innerHTML = `
             <option value="all">All Races</option>
             ${races.map(r =>
-                `<option value="${r}">${r}</option>`
-            ).join("")}
+                    `<option value="${r}">${r}</option>`
+                ).join("")}
         `;
-        }
+            }
 
-        // FILTER FUNCTIONS
-        function applyFilters() {
+            // FILTER FUNCTIONS
+            function applyFilters() {
 
-            const searchValue =
-                searchInput.value.toLowerCase();
+                const searchValue =
+                    searchInput.value.toLowerCase();
 
-            const filtered = allCharacters
+                const filtered = allCharacters
 
-                .filter(c => {
+                    .filter(c => {
 
-                    return (
-                        (c.name || "")
-                            .toLowerCase()
-                            .includes(searchValue)
+                        return (
+                            (c.name || "")
+                                .toLowerCase()
+                                .includes(searchValue)
 
-                        ||
+                            ||
 
-                        (c.race || "")
-                            .toLowerCase()
-                            .includes(searchValue)
+                            (c.race || "")
+                                .toLowerCase()
+                                .includes(searchValue)
 
-                        ||
+                            ||
 
-                        String(c.id)
-                            .includes(searchValue)
+                            String(c.id)
+                                .includes(searchValue)
+                        );
+                    })
+
+                    .filter(c => {
+
+                        return (
+                            selectedRace === "all"
+                            ||
+                            c.race === selectedRace
+                        );
+                    });
+
+                renderCharacters(filtered);
+            }
+
+
+            // FETCH DATA
+            async function getCharacters() {
+                try {
+                    const response = await fetch(
+                        "https://www.demonslayer-api.com/api/v1/characters?limit=45&page=1"
                     );
-                })
 
-                .filter(c => {
+                    const data = await response.json();
 
-                    return (
-                        selectedRace === "all"
-                        ||
-                        c.race === selectedRace
-                    );
-                });
+                    allCharacters = data.content || [];
 
-            renderCharacters(filtered);
-        }
+                    renderCharacters(allCharacters);
+                    fillRaceOptions(allCharacters);
 
+                } catch (error) {
+                    console.error(error);
 
-        // FETCH DATA
-        async function getCharacters() {
-            try {
-                const response = await fetch(
-                    "https://www.demonslayer-api.com/api/v1/characters?limit=45&page=1"
-                );
-
-                const data = await response.json();
-
-                allCharacters = data.content || [];
-
-                renderCharacters(allCharacters);
-                fillRaceOptions(allCharacters);
-
-            } catch (error) {
-                console.error(error);
-
-                container.innerHTML = `
+                    container.innerHTML = `
             <div class="col-12">
                 <div class="alert alert-danger text-center">
                     Failed to load characters.
                 </div>
             </div>
         `;
+                }
             }
-        }
 
-        // EVENTS
-        searchInput.addEventListener("input", applyFilters);
+            // EVENTS
+            searchInput.addEventListener("input", applyFilters);
 
-        raceFilter.addEventListener("change", (e) => {
+            raceFilter.addEventListener("change", (e) => {
 
-            selectedRace = e.target.value;
+                selectedRace = e.target.value;
 
-            applyFilters();
-        });
-
-        getCharacters();
-
-    </script>
-
-    <script>
-        function autoCloseNavbar() {
-            const navbar = document.getElementById("navbarNav");
-
-            const bsCollapse = bootstrap.Collapse.getInstance(navbar);
-
-            if (bsCollapse) {
-                bsCollapse.hide();
-            }
-        }
-
-        document.querySelectorAll(".navbar-nav .nav-link")
-            .forEach(link => {
-                link.addEventListener("click", autoCloseNavbar);
+                applyFilters();
             });
-    </script>
+
+            getCharacters();
+
+        </script>
+
+        <script>
+            function autoCloseNavbar() {
+                const navbar = document.getElementById("navbarNav");
+
+                const bsCollapse = bootstrap.Collapse.getInstance(navbar);
+
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                }
+            }
+
+            document.querySelectorAll(".navbar-nav .nav-link")
+                .forEach(link => {
+                    link.addEventListener("click", autoCloseNavbar);
+                });
+
+            // Dark Mode
+            var mode = "Light";
+            var body = document.getElementById("body");
+            var modeBtn = document.getElementById("modeBtn");
+
+            // Get the current theme from the body
+            var mode = body.getAttribute("data-bs-theme") === "dark" ? "Dark" : "Light";
+            modeBtn.innerText = mode === "Dark" ? "Light Mode" : "Dark Mode";
+
+            function switchTheme() {
+                if (mode == "Light") {
+                    mode = "Dark";
+                    modeBtn.innerText = "Light Mode";
+                } else {
+                    mode = "Light";
+                    modeBtn.innerText = "Dark Mode";
+                }
+
+                body.setAttribute("data-bs-theme", mode.toLowerCase());
+            }
+        </script>
 
 </body>
 

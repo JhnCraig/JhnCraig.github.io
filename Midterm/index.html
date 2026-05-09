@@ -73,7 +73,6 @@
 
             .hero-section {
                 min-height: 100vh;
-                /* fill screen nicely */
                 background-size: cover !important;
                 background-position: center !important;
             }
@@ -93,19 +92,16 @@
             padding-top: 70px;
         }
 
-        /* make dropdown behave like a block */
         .navbar-collapse {
             background-color: #800000;
             text-align: center;
         }
 
-        /* better spacing in dropdown */
         .navbar-nav .nav-link {
             padding: 10px;
             font-size: 18px;
         }
 
-        /* fix toggler visibility */
         .navbar-toggler {
             border: none;
         }
@@ -147,11 +143,76 @@
         #Home {
             scroll-margin-top: 80px;
         }
+
+        /* Feature card border adapts to theme */
+        .feature-card {
+            background-color: white !important;
+            color: black !important;
+
+            border-radius: 15px !important;
+            transition: 0.3s ease;
+        }
+
+        /* LIGHT MODE */
+        [data-bs-theme="light"] .feature-card {
+            border: 3px solid #800000 !important;
+
+            box-shadow: 0 0 15px rgba(128, 0, 0, 0.4);
+        }
+
+        /* DARK MODE */
+        [data-bs-theme="dark"] .feature-card {
+            border: 3px solid #ff4d4d !important;
+
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.5);
+        }
+
+        .feature-card .card-body,
+        .feature-card .card-text,
+        .feature-card .h4 {
+            color: black !important;
+        }
+
+        .story-overview {
+            transition: 0.3s ease;
+
+            border-radius: 15px;
+            margin: 40px;
+            padding: 20px;
+        }
+
+        /* LIGHT MODE */
+        [data-bs-theme="light"] .story-overview {
+            background-color: #212529;
+            color: white;
+
+            border: 3px solid #800000;
+
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* DARK MODE */
+        [data-bs-theme="dark"] .story-overview {
+            background-color: #f8f9fa;
+            color: black;
+
+            border: 3px solid #ff4d4d;
+
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.5);
+        }
+
+        .story-text {
+            transition: 0.3s ease;
+        }
+
+        #modeBtn {
+            width: 130px;
+        }
     </style>
 
 </head>
 
-<body>
+<body id="body" data-bs-theme="light">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md bg-maroon fixed-top">
@@ -162,7 +223,7 @@
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="span navbar-toggler-icon"></div>
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -174,6 +235,11 @@
                         <a class="nav-link fs-6 me-4" href="#features">Features</a>
                     </li>
                 </ul>
+
+                <button id="modeBtn" onclick="switchTheme()" class="btn btn-maroon text-white shadow me-3">
+                    Dark Mode
+                </button>
+
             </div>
 
         </div>
@@ -189,7 +255,8 @@
 
         <div class="content">
             <div class=" h1 display-4 fw-bold mb-4">Enter the World of Demon Slayers</div>
-            <div class="p lead">Explore characters, story arcs, and breathtaking visuals from the Demon Slayer universe.</div>
+            <div class="p lead">Explore characters, story arcs, and breathtaking visuals from the Demon Slayer universe.
+            </div>
         </div>
 
     </div>
@@ -212,8 +279,8 @@
                         <a href="characters.html" class="text-decoration-none w-100 d-flex justify-content-center">
                             <div class="card feature-card shadow border-0" style="width: 260px; height: 210px;">
                                 <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d4cfdf7e-824a-4ffa-bf04-4253a6e64a25/dib70u8-ffd38a6d-f5ba-419c-b116-4b3879c12bc4.png/v1/fill/w_894,h_894/serious_zenitsu__by_3v4d_dib70u8-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2Q0Y2ZkZjdlLTgyNGEtNGZmYS1iZjA0LTQyNTNhNmU2NGEyNVwvZGliNzB1OC1mZmQzOGE2ZC1mNWJhLTQxOWMtYjExNi00YjM4NzljMTJiYzQucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.kneaIiyLqXrnGQHR3I2nlwPB-mdGPcaprVny-7zuFdM"
-                                    class="card-img-top feature-img" alt="Characters"
-                                    style="height: 140px; object-fit: contain;">
+                                    class="card-img-top feature-img mt-3" alt="Characters"
+                                    style="height: 120px; object-fit: contain;">
                                 <div class="card-body">
                                     <div class="h4 card-text fw-bold">
                                         Characters
@@ -227,8 +294,8 @@
                         <a href="combat.html" class="text-decoration-none w-100 d-flex justify-content-center">
                             <div class="card feature-card shadow border-0" style="width: 260px; height: 210px;">
                                 <img src="https://tse1.mm.bing.net/th/id/OIP.ODvEHo24cD1j42I2gTY6pAHaFN?rs=1&pid=ImgDetMain&o=7&rm=3"
-                                    class="card-img-top feature-img rounded-circle" alt="Combat Style"
-                                    style="height: 140px; object-fit: contain;">
+                                    class="card-img-top feature-img mt-3" alt="Combat Style"
+                                    style="height: 120px; object-fit: contain;">
                                 <div class="card-body">
                                     <div class="h4 card-text fw-bold">
                                         Combat Style
@@ -244,12 +311,13 @@
         </div>
     </div>
 
-    <div class="container-fluid bg-dark pb-5 pt-1">
-        <div class="text-white mt-5 mb-4 fs-4 h2">
+    <div class="container-fluid pb-5 pt-1 story-overview">
+
+        <div class="mt-5 mb-4 fs-4 h2">
             <div class="p">Story Overview:</div>
         </div>
 
-        <div class="p text-white mb-4 ms-5 me-5" style="text-align: justify;">
+        <div class="p mb-4 ms-5 me-5 story-text" style="text-align: justify;">
             The story is set in Taishō-era Japan, where a secret organization called the Demon Slayer Corps
             has fought demons for centuries. Demons are former humans with supernatural abilities, including
             enhanced strength, rapid regeneration, and unique powers known as Blood Demon Arts. They can only
@@ -285,6 +353,24 @@
             .forEach(link => {
                 link.addEventListener("click", autoCloseNavbar);
             });
+
+
+        // Dark Mode
+        var mode = "Light";
+        var body = document.getElementById("body");
+        var modeBtn = document.getElementById("modeBtn");
+
+        function switchTheme() {
+            if (mode == "Light") {
+                mode = "Dark";
+                modeBtn.innerText = "Light Mode";
+            } else {
+                mode = "Light";
+                modeBtn.innerText = "Dark Mode";
+            }
+
+            body.setAttribute("data-bs-theme", mode.toLowerCase());
+        }
     </script>
 
 </body>
